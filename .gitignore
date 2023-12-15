@@ -19,15 +19,9 @@ artifacts/
 .vscode/
 
 # Rider
-.idea/
-*.sln.iml
 
 # User-specific files
-*.suo
-*.user
-*.userosscache
-*.suo
-*.sln.docstates
+
 
 # Mono Auto Generated Files
 mono_crash.*
