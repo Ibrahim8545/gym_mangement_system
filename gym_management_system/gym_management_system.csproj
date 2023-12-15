@@ -63,6 +63,7 @@
     <Compile Include="login_form.Designer.cs">
       <DependentUpon>login_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="login_form.resx">
