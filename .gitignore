@@ -1,0 +1,47 @@
+# Ignore NuGet packages
+*.nupkg
+
+# Ignore the 'packages' folder (if used by NuGet)
+/packages/
+
+# Ignore node_modules folder (if using npm)
+node_modules/
+
+# Ignore yarn lock file (if using yarn)
+yarn.lock
+
+# Ignore .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Visual Studio cache directory
+.vs2019/
+.vs/
