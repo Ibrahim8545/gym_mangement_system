@@ -243,9 +243,9 @@ namespace gym_management_system.Service
             try
             {
                 EmployeeModel employeeModel = new EmployeeModel();
-                string query = "SELECT * FROM employee where username = " + userName + "AND account_status = 1";
+                string query = "SELECT * FROM employee where user_name = '" + userName + "' AND account_status = 1";
                 MySqlDataReader reader = Global.sqlService.SqlSelect(query);
-                if (reader.HasRows)
+                if (reader.HasRows) 
                 {
                     reader.Read();
                     employeeModel.Id = Convert.ToInt32(reader["id"]);

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -103,6 +104,37 @@ namespace gym_management_system
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (textUsername.Text != "Username" && textPassword.Text != "Password")
+            {
+                string username = textUsername.Text, password = textPassword.Text;
+                EmployeeModel employeeModel = Global.employeeModel;
+                employeeModel = Global.employeeService.login(username, password);
+                if (employeeModel != null)
+                {
+                    if (employeeModel.AccountStatus == true)
+                    {
+                        MessageBox.Show(employeeModel.Name);
+                    }
+                }
+                else
+                {
+                    lab_login_error.Text = "Username or Password is InCorrect";
+                }
+
+            }
+            else
+            {
+                if (textUsername.Text == "Username")
+                {
+                    textUsername.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
+                    lab_username_err.Text = "Username Required!";
+                }
+                if (textPassword.Text == "Password")
+                {
+                    textPassword.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
+                    lab_pass_err.Text = "Password Required!";
+                }
+            }
 
         }
 

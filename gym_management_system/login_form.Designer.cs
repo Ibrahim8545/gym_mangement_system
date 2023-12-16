@@ -37,13 +37,13 @@
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.textPassword = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.show_pass_btn = new System.Windows.Forms.PictureBox();
             this.hide_pass_btn = new System.Windows.Forms.PictureBox();
             this.btnLogin = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lab_login_error = new System.Windows.Forms.Label();
             this.lab_pass_err = new System.Windows.Forms.Label();
             this.lab_username_err = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.show_pass_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hide_pass_btn)).BeginInit();
@@ -129,6 +129,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(971, 631);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Gilroy-Bold", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(558, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(273, 69);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Welcome";
             // 
             // show_pass_btn
             // 
@@ -251,9 +263,10 @@
             // lab_login_error
             // 
             this.lab_login_error.AutoSize = true;
+            this.lab_login_error.BackColor = System.Drawing.Color.Transparent;
             this.lab_login_error.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_login_error.ForeColor = System.Drawing.Color.IndianRed;
-            this.lab_login_error.Location = new System.Drawing.Point(574, 547);
+            this.lab_login_error.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.lab_login_error.Location = new System.Drawing.Point(520, 552);
             this.lab_login_error.Name = "lab_login_error";
             this.lab_login_error.Size = new System.Drawing.Size(0, 26);
             this.lab_login_error.TabIndex = 33;
@@ -279,18 +292,6 @@
             this.lab_username_err.Name = "lab_username_err";
             this.lab_username_err.Size = new System.Drawing.Size(0, 27);
             this.lab_username_err.TabIndex = 31;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Gilroy-Bold", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(558, 113);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 69);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Welcome";
             // 
             // Login_form
             // 

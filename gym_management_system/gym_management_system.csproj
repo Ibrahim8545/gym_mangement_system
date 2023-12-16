@@ -116,6 +116,8 @@
     <Compile Include="login_form.Designer.cs">
       <DependentUpon>login_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manger\MangeImage.cs" />
+    <Compile Include="Manger\MangePassword.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Program.cs" />
