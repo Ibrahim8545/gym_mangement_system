@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace gym_management_system.Models
 {
-    public class Annoucement
+    public class AnnoucementModl
     {
         private int id;
         private string title, content, base64Image;
@@ -15,7 +15,7 @@ namespace gym_management_system.Models
         private Image picture;
         private EmployeeModel employeeModel;
 
-        public Annoucement(int id = 0, string title = null, string content = null, Image picture = null, string base64Image = null, DateTime date = default, EmployeeModel employeeModel = null)
+        public AnnoucementModl(int id = 0, string title = null, string content = null, Image picture = null, string base64Image = null, DateTime date = default, EmployeeModel employeeModel = null)
         {
             Id = id;
             Title = title;
