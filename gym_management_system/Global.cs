@@ -1,4 +1,5 @@
-﻿using gym_management_system.Models;
+﻿using gym_management_system.Manger;
+using gym_management_system.Models;
 using gym_management_system.Service;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace gym_management_system
         public static SqlService sqlService = new SqlService();
         public static EmployeeService employeeService = new EmployeeService();
         public static EmployeeModel employeeModel = EmployeeModel.Instance;
+        public static MangePassword mangePassword = new MangePassword();
+        public static MangeImage mangeImage = new MangeImage();
     }
 }

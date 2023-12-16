@@ -77,7 +77,7 @@ namespace gym_management_system.Manger
             double imageSizeInKB;
 
             EncoderParameters encoderParameters = new EncoderParameters(1);
-            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 15l);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 15L);
 
             ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
 
@@ -110,7 +110,7 @@ namespace gym_management_system.Manger
             double imageSizeInKB;
 
             EncoderParameters encoderParameters = new EncoderParameters(1);
-            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 15l);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 15L);
 
             ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
 

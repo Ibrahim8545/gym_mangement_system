@@ -90,7 +90,7 @@ namespace gym_management_system.Service
                 string query = $"INSERT INTO employee (id, first_name, second_name, brithday, gender, picture, email, phone_number, user_name, password, account_status, admin) VALUES " +
                                $"('{id}', '{employeeModel.FirstName}', '{employeeModel.SecondName}', '{employeeModel.Brithday.ToString("yyyy-MM-dd")}', " +
                                $"'{employeeModel.Gender}', '{employeeModel.Base64Image}', " +
-                               $"'{employeeModel.Email}', '{employeeModel.PhoneNumber}', '{employeeModel.Username}', '{constants.mangePassword.encrypt_password(employeeModel.Password, id)}', " +
+                               $"'{employeeModel.Email}', '{employeeModel.PhoneNumber}', '{employeeModel.Username}', '{Global.mangePassword.encrypt_password(employeeModel.Password, id)}', " +
                                $"{(employeeModel.AccountStatus ? 1 : 0)}, {(employeeModel.Admin ? 1 : 0)})";
 
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);
