@@ -124,6 +124,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\EmployeeService.cs" />
+    <Compile Include="Service\MemberService.cs" />
     <Compile Include="Service\SqlService.cs" />
     <EmbeddedResource Include="login_form.resx">
       <DependentUpon>login_form.cs</DependentUpon>
