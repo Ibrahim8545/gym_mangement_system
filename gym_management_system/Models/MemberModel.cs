@@ -21,7 +21,7 @@ namespace gym_management_system.Models
             double currentYear = DateTime.Now.Year;
             currentYear = (((currentYear % 100) / 100.0) + 2) * 1000000;
             int y = (int)currentYear;
-            int last_id = 0;
+            int last_id = Global.memberService.getLastId();
             if (last_id == -1)
             {
                 return -1;
