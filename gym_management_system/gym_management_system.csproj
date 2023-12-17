@@ -118,15 +118,17 @@
     </Compile>
     <Compile Include="Manger\MangeImage.cs" />
     <Compile Include="Manger\MangePassword.cs" />
-    <Compile Include="Models\Annoucement.cs" />
+    <Compile Include="Models\AnnoucementModl.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\TrainerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="Service\SqlService.cs" />
+    <Compile Include="Service\TrainerService.cs" />
     <EmbeddedResource Include="login_form.resx">
       <DependentUpon>login_form.cs</DependentUpon>
     </EmbeddedResource>
