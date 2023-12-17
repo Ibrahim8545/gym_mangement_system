@@ -11,15 +11,18 @@ namespace gym_management_system.Models
     {
         private string specialization;
         private int privateLessonPrice;
+        private bool status;
 
-        public TrainerModel(int id = 0, string firstName = null, string secondName = null, string gender = null, string email = null, string phoneNumber = null, DateTime brithday = default, Image picture = null, string specialization = null, int privateLessonPrice = 0) : base(id: id, firstName: firstName, secondName: secondName, gender: gender, email: email, phoneNumber: phoneNumber, brithday: brithday, picture: picture)
+        public TrainerModel(int id = 0, string firstName = null, string secondName = null, string gender = null, string email = null, string phoneNumber = null, DateTime brithday = default, Image picture = null, string specialization = null, int privateLessonPrice = 0, bool status = false) : base(id: id, firstName: firstName, secondName: secondName, gender: gender, email: email, phoneNumber: phoneNumber, brithday: brithday, picture: picture)
         { 
             Specialization = specialization;
             PrivateLessonPrice = privateLessonPrice;
+            Status = status;
         }
 
         public string Specialization { get { return specialization; } set { specialization = value; } }
         public int PrivateLessonPrice { get { return privateLessonPrice; } set { privateLessonPrice = value; } }
+        public bool Status { get { return status; } set { status = value; } }
         
         public override int generateId()
         {
