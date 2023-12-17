@@ -10,32 +10,32 @@ namespace gym_management_system.Service
 {
     public class EmployeeService
     {
-        public List<EmployeeModel> SearchByIdOrUsername(string idOrUsername, bool includePicture, bool byId = false, bool byUsername = false, bool byFName = false, bool bySName = false, bool byFulName = false)
+        public List<EmployeeModel> Search(string search, bool includePicture, bool byId = false, bool byUsername = false, bool byFName = false, bool bySName = false, bool byFulName = false)
         {
             try
             {
                 List<EmployeeModel> employeeModels = new List<EmployeeModel>();
                 string query = "";
 
-                if (byId && int.TryParse(idOrUsername, out int id))
+                if (byId && int.TryParse(search, out int id))
                 {
                     query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE id = {id}";
                 }
                 else if (byUsername)
                 {
-                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE user_name = '{idOrUsername}'";
+                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE user_name = '{search}'";
                 }
                 else if (byFName || bySName)
                 {
-                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE first_name = '{idOrUsername}' OR second_name = '{idOrUsername}'";
+                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE first_name = '{search}' OR second_name = '{search}'";
                 }
                 else if (byFulName)
                 {
-                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE CONCAT(first_name , ' ' , second_name) = '{idOrUsername}'";
+                    query = $"SELECT {GetSelectColumns(includePicture)} FROM employee WHERE CONCAT(first_name , ' ' , second_name) = '{search}'";
                 }
                 if (query == "")
                 {
-                    Console.WriteLine($"Error getting from Employee search by Id or Username: No selected search tybe");
+                    Console.WriteLine($"Error getting from Employee search: No selected search tybe");
                     return null;
                 }
                 MySqlDataReader reader = Global.sqlService.SqlSelect(query);
@@ -48,6 +48,7 @@ namespace gym_management_system.Service
                         if (includePicture)
                         {
                             em.Picture = Global.mangeImage.ConvertBase64ToImage(reader["picture"].ToString());
+                            em.Base64Image = reader["picture"].ToString();
                         }
                         employeeModels.Add(em);
                     }
@@ -56,13 +57,13 @@ namespace gym_management_system.Service
                 }
                 else
                 {
-                    Console.WriteLine($"Error getting from Employee search by Id or Username: No records found for the specified ID or Username '{idOrUsername}'");
+                    Console.WriteLine($"Error getting from employee search: No records found '{search}'");
                     return null;
                 }
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"Error getting from MySql Employee search by Id or Username: {ex.Message}");
+                Console.WriteLine($"Error getting from MySql employee search: {ex.Message}");
                 return null;
             }
         }
@@ -112,7 +113,7 @@ namespace gym_management_system.Service
             }
         }
 
-        public bool UpdateEmployeeStatusAttributes(int employeeId, EmployeeModel employeeModel, bool firstName = false, bool secondName = false, bool username = false, bool password = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool accountStatus = false, bool admin = false)
+        public bool UpdateEmployeeAttributes(int employeeId, EmployeeModel employeeModel, bool firstName = false, bool secondName = false, bool username = false, bool password = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool accountStatus = false, bool admin = false)
         {
             try
             {
@@ -163,7 +164,7 @@ namespace gym_management_system.Service
                 }
                 if (query == $"UPDATE employee SET")
                 {
-                    Console.WriteLine($"Error updating employee status attributes: No selected data modfied");
+                    Console.WriteLine($"Error updating employee attributes: No selected data modfied");
                     return false;
                 }
                 query = query.Substring(0, query.Length - 1);
@@ -172,12 +173,12 @@ namespace gym_management_system.Service
 
                 if (rowsAffected > 0)
                 {
-                    Console.WriteLine($"Employee status attributes updated successfully for ID: {employeeId}");
+                    Console.WriteLine($"employee attributes updated successfully for ID: {employeeId}");
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine($"Error updating employee status attributes: No rows affected for ID: {employeeId}");
+                    Console.WriteLine($"Error updating employee attributes: No rows affected for ID: {employeeId}");
                     return false;
                 }
             }
@@ -219,6 +220,7 @@ namespace gym_management_system.Service
                         if (includePicture)
                         {
                             em.Picture = Global.mangeImage.ConvertBase64ToImage(reader["picture"].ToString());
+                            em.Base64Image = reader["picture"].ToString();
                         }
                         employeeModels.Add(em);
                     }
@@ -264,6 +266,7 @@ namespace gym_management_system.Service
                     employeeModel.Username = userName;
                     employeeModel.Password = password;
                     employeeModel.AccountStatus = true;
+                    employeeModel.Base64Image = reader["picture"].ToString();
                     employeeModel.Admin = Convert.ToBoolean(reader["admin"]);
                     return employeeModel;
                 }
