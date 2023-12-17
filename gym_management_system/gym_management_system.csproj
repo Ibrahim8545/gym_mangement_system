@@ -123,6 +123,7 @@
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MonthOfferModel.cs" />
+    <Compile Include="Models\PackgeModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\TrainerModel.cs" />
     <Compile Include="Program.cs" />
