@@ -34,5 +34,18 @@ namespace gym_management_system.Models
         public string SessionTwoDayName { get { return sessionTwoDayName; } set { sessionTwoDayName = value; } }
         public string Status { get { return status; } set { status = value; } }
         public TrainerModel TrainerModel { get {  return trainerModel; } set {  trainerModel = value; } }
+        public TrainerModel getTrainerData() {
+            List<TrainerModel> trainerModels =  Global.trainerService.Search(trainerModel.Id.ToString(), false, byId: false);
+            if (trainerModel != null)
+            {
+                trainerModel = trainerModels[0];
+                return trainerModel;
+            }
+            else
+            {
+                Console.WriteLine("Error getting from getTrainerData in class model: no trainer found");
+                return null;
+            }
+        }
     }
 }
