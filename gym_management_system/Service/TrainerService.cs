@@ -40,10 +40,11 @@ namespace gym_management_system.Service
                 {
                     while (reader.Read())
                     {
-                        TrainerModel tm = new TrainerModel(id: Convert.ToInt32(reader["id"]), firstName: reader["first_name"].ToString(), secondName: reader["second_name"].ToString(), brithday: Convert.ToDateTime(reader["brithday"]), gender: reader["gender"].ToString(), email: reader["email"].ToString(), phoneNumber: reader["phone_number"].ToString(), specialization: reader["specialization"].ToString(), privateLessonPrice: Convert.ToInt32(reader["private_lesson_price"]));
+                        TrainerModel tm = new TrainerModel(id: Convert.ToInt32(reader["id"]), firstName: reader["first_name"].ToString(), secondName: reader["second_name"].ToString(), brithday: Convert.ToDateTime(reader["brithday"]), gender: reader["gender"].ToString(), email: reader["email"].ToString(), phoneNumber: reader["phone_number"].ToString(), specialization: reader["specialization"].ToString(), privateLessonPrice: Convert.ToInt32(reader["private_lesson_price"]), status: Convert.ToBoolean(reader["status"]));
                         if (includePicture)
                         {
                             tm.Picture = Global.mangeImage.ConvertBase64ToImage(reader["picture"].ToString());
+                            tm.Base64Image = reader["picture"].ToString();
                         }
                         trainerModels.Add(tm);
                     }
@@ -71,7 +72,7 @@ namespace gym_management_system.Service
                 string query = $"INSERT INTO trainer (id, first_name, second_name, brithday, gender, picture, email, phone_number, specialization, private_lesson_price) VALUES " +
                                $"('{id}', '{trainerModel.FirstName}', '{trainerModel.SecondName}', '{trainerModel.Brithday.ToString("yyyy-MM-dd")}', " +
                                $"'{trainerModel.Gender}', '{trainerModel.Base64Image}', " +
-                               $"'{trainerModel.Email}', '{trainerModel.PhoneNumber}', '{trainerModel.Specialization}', {trainerModel.PrivateLessonPrice}";
+                               $"'{trainerModel.Email}', '{trainerModel.PhoneNumber}', '{trainerModel.Specialization}', '{trainerModel.PrivateLessonPrice}', '{trainerModel.Status}'";
 
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);
                 if (rowsAffected > 0)
@@ -92,7 +93,7 @@ namespace gym_management_system.Service
             }
         }
 
-        public bool updateTrainerAttributes(TrainerModel trainerModel, bool firstName = false, bool secondName = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool specialization = false, bool privateLessonPrice = false)
+        public bool updateTrainerAttributes(TrainerModel trainerModel, bool firstName = false, bool secondName = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool specialization = false, bool privateLessonPrice = false, bool status = false)
         {
             try
             {
@@ -132,6 +133,10 @@ namespace gym_management_system.Service
                 if (privateLessonPrice)
                 {
                     query += $" private_lesson_price = {trainerModel.PrivateLessonPrice},";
+                }
+                if (status)
+                {
+                    query += $" status = {trainerModel.Status},";
                 }
                 if (query == $"UPDATE trainer SET")
                 {
@@ -179,7 +184,7 @@ namespace gym_management_system.Service
                 {
                     while (reader.Read())
                     {
-                        TrainerModel tm = new TrainerModel(id: Convert.ToInt32(reader["id"]), firstName: reader["first_name"].ToString(), secondName: reader["second_name"].ToString(), brithday: Convert.ToDateTime(reader["brithday"]), gender: reader["gender"].ToString(), email: reader["email"].ToString(), phoneNumber: reader["phone_number"].ToString(), specialization: reader["specialization"].ToString(), privateLessonPrice: Convert.ToInt32(reader["private_lesson_price"]));
+                        TrainerModel tm = new TrainerModel(id: Convert.ToInt32(reader["id"]), firstName: reader["first_name"].ToString(), secondName: reader["second_name"].ToString(), brithday: Convert.ToDateTime(reader["brithday"]), gender: reader["gender"].ToString(), email: reader["email"].ToString(), phoneNumber: reader["phone_number"].ToString(), specialization: reader["specialization"].ToString(), privateLessonPrice: Convert.ToInt32(reader["private_lesson_price"]), status: Convert.ToBoolean(reader["status"]));
                         if (includePicture)
                         {
                             tm.Picture = Global.mangeImage.ConvertBase64ToImage(reader["picture"].ToString());
@@ -236,7 +241,7 @@ namespace gym_management_system.Service
             }
             else
             {
-                return "id, first_name, second_name, brithday, gender, email, phone_number, specialization, private_lesson_price";
+                return "id, first_name, second_name, brithday, gender, email, phone_number, specialization, private_lesson_price, status";
             }
         }
     }
