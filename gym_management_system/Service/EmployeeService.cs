@@ -113,7 +113,7 @@ namespace gym_management_system.Service
             }
         }
 
-        public bool UpdateEmployeeAttributes(int employeeId, EmployeeModel employeeModel, bool firstName = false, bool secondName = false, bool username = false, bool password = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool accountStatus = false, bool admin = false)
+        public bool UpdateEmployeeAttributes(EmployeeModel employeeModel, bool firstName = false, bool secondName = false, bool username = false, bool password = false, bool gender = false, bool brithday = false, bool email = false, bool phoneNumber = false, bool pictur = false, bool accountStatus = false, bool admin = false)
         {
             try
             {
@@ -132,11 +132,11 @@ namespace gym_management_system.Service
                 }
                 if (password)
                 {
-                    query += $"password = '{Global.mangePassword.encrypt_password(employeeModel.Password, employeeModel.Id)}',";
+                    query += $" password = '{Global.mangePassword.encrypt_password(employeeModel.Password, employeeModel.Id)}',";
                 }
                 if (gender)
                 {
-                    query += $"gender = '{employeeModel.Gender}',";
+                    query += $" gender = '{employeeModel.Gender}',";
                 }
                 if (brithday)
                 {
@@ -144,23 +144,23 @@ namespace gym_management_system.Service
                 }
                 if (email)
                 {
-                    query += $"email = '{employeeModel.Email}',";
+                    query += $" email = '{employeeModel.Email}',";
                 }
                 if (phoneNumber)
                 {
-                    query += $"phone_number = '{employeeModel.PhoneNumber}',";
+                    query += $" phone_number = '{employeeModel.PhoneNumber}',";
                 }
                 if (pictur)
                 {
-                    query += $"picture = '{employeeModel.Base64Image}',";
+                    query += $" picture = '{employeeModel.Base64Image}',";
                 }
                 if (accountStatus)
                 {
-                    query += $"account_status = {(employeeModel.AccountStatus ? 1 : 0)},";
+                    query += $" account_status = {(employeeModel.AccountStatus ? 1 : 0)},";
                 }
                 if (admin)
                 {
-                    query += $"admin = {(employeeModel.Admin ? 1 : 0)},";
+                    query += $" admin = {(employeeModel.Admin ? 1 : 0)},";
                 }
                 if (query == $"UPDATE employee SET")
                 {
@@ -168,17 +168,17 @@ namespace gym_management_system.Service
                     return false;
                 }
                 query = query.Substring(0, query.Length - 1);
-                query += $" WHERE id = {employeeId}";
+                query += $" WHERE id = {employeeModel.Id}";
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);
 
                 if (rowsAffected > 0)
                 {
-                    Console.WriteLine($"employee attributes updated successfully for ID: {employeeId}");
+                    Console.WriteLine($"employee attributes updated successfully for ID: {employeeModel.Id}");
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine($"Error updating employee attributes: No rows affected for ID: {employeeId}");
+                    Console.WriteLine($"Error updating employee attributes: No rows affected for ID: {employeeModel.Id}");
                     return false;
                 }
             }
