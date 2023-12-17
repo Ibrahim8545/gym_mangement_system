@@ -119,6 +119,7 @@
     <Compile Include="Manger\MangeImage.cs" />
     <Compile Include="Manger\MangePassword.cs" />
     <Compile Include="Models\AnnoucementModl.cs" />
+    <Compile Include="Models\AttendanceModel.cs" />
     <Compile Include="Models\ClassModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
