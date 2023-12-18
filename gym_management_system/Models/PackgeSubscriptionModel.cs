@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gym_management_system.Models
 {
-    public class PackgeSubscriptionModel : SubscriptionModel
+    public class PackgeSubscriptionModel : SubscriptionModel<PackgeModel>
     {
         PackgeModel packgeModel;
         MonthOfferModel monthOffer;
@@ -23,5 +23,10 @@ namespace gym_management_system.Models
         public PackgeModel PackgeModel { get { return packgeModel; } set { packgeModel = value; } }
         public MonthOfferModel MonthOffer { get { return monthOffer; } set { monthOffer = value; } }
         public List<ClassModel> Classes { get {  return classes; } set { classes = value; } }
+
+        public override PackgeModel getDataOfTybeOfSubscription()
+        {
+            return packgeModel;
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gym_management_system.Models
 {
-    public abstract class SubscriptionModel
+    public abstract class SubscriptionModel<T>
     {
         protected int id, numOfAttend;
         protected DateTime startDate, endDate;
@@ -59,5 +59,7 @@ namespace gym_management_system.Models
                 return null;
             }
         }
+
+        public abstract T getDataOfTybeOfSubscription();
     }
 }
