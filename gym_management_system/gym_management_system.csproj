@@ -138,6 +138,7 @@
     <Compile Include="Models\TrainerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AnnoucementService.cs" />
     <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\MemberService.cs" />
     <Compile Include="Service\PackgeService.cs" />
