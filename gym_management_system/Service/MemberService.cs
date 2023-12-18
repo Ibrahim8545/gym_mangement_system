@@ -104,7 +104,7 @@ namespace gym_management_system.Service
                 string query = $"INSERT INTO member (id, first_name, second_name, brithday, gender, picture, email, phone_number, attendance_count) VALUES " +
                                $"('{id}', '{memberModel.FirstName}', '{memberModel.SecondName}', '{memberModel.Brithday.ToString("yyyy-MM-dd")}', " +
                                $"'{memberModel.Gender}', '{memberModel.Base64Image}', " +
-                               $"'{memberModel.Email}', '{memberModel.PhoneNumber}', {memberModel.AttendanceCount}";
+                               $"'{memberModel.Email}', '{memberModel.PhoneNumber}', {memberModel.AttendanceCount})";
 
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);
                 if (rowsAffected > 0)
