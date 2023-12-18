@@ -109,6 +109,46 @@ namespace gym_management_system.Service
             }
         }
 
+        public List<PackgeModel> GetAllPackages(bool includeOnlyActive = false)
+        {
+            try
+            {
+                List<PackgeModel> packgeModels = new List<PackgeModel>();
+                string statusFilter = includeOnlyActive ? "WHERE status = 'true'" : "";
+                string query = $"SELECT * FROM packge {statusFilter}";
+                MySqlDataReader reader = Global.sqlService.SqlSelect(query);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["id"]);
+                        string name = reader["name"].ToString();
+                        int monthOfferID = Convert.ToInt32(reader["month_offerID"]);
+                        int numOfClass = Convert.ToInt32(reader["num_of_classes"]);
+                        int numOfInvatation = Convert.ToInt32(reader["num_of_invatation"]);
+                        int discountPercentage = Convert.ToInt32(reader["discount_percentage"]);
+                        string status = reader["status"].ToString();
+                        MonthOfferModel monthOffer = new MonthOfferModel(id:monthOfferID);
+
+                        PackgeModel pm = new PackgeModel(id, numOfClass, numOfInvatation, discountPercentage, name, status, monthOffer);
+                        packgeModels.Add(pm);
+                    }
+
+                    return packgeModels;
+                }
+                else
+                {
+                    Console.WriteLine("Error getting from GetAllPackages: No records found");
+                    return null;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error getting from MySql GetAllPackages: {ex.Message}");
+                return null;
+            }
+        }
+
         public bool UpdatePackageAttributes(PackgeModel packageModel, bool name = false, bool numOfClass = false, bool numOfInvitation = false, bool discountPercentage = false, bool status = false, bool monthOffer = false)
         {
             try
