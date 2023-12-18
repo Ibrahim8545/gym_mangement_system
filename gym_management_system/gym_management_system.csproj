@@ -122,6 +122,7 @@
     <Compile Include="Models\AttendanceModel.cs" />
     <Compile Include="Models\ClassModel.cs" />
     <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\EmployeeEmailModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\MemberAttendanceModel.cs" />
     <Compile Include="Models\MemberEmailModel.cs" />
