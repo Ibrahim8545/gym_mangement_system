@@ -27,6 +27,7 @@ namespace gym_management_system.Service
                             content: reader["content"].ToString(),
                             date: Convert.ToDateTime(reader["date"]),
                             base64Image: reader["image"].ToString(),
+                            picture: Global.mangeImage.ConvertBase64ToImage(reader["image"].ToString()),
                             employeeModel: new EmployeeModel(id: Convert.ToInt32(reader["id"]))
                         );
 
