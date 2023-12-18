@@ -130,6 +130,7 @@
     <Compile Include="Models\MonthOfferModel.cs" />
     <Compile Include="Models\PackgeModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\SubscriptionModel.cs" />
     <Compile Include="Models\TrainerAttendanceModel.cs" />
     <Compile Include="Models\TrainerEmailModel.cs" />
     <Compile Include="Models\TrainerModel.cs" />
