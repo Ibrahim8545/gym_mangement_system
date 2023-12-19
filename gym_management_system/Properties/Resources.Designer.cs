@@ -63,6 +63,16 @@ namespace gym_management_system.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _154039234778Fitness_Center {
+            get {
+                object obj = ResourceManager.GetObject("154039234778Fitness_Center", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eye_2 {
             get {
                 object obj = ResourceManager.GetObject("eye 2", resourceCulture);
