@@ -107,9 +107,13 @@ namespace gym_management_system
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (backgroundWorkerLogin.IsBusy)
+            {
+                return;
+            }
             if (textUsername.Text != "Username" && textPassword.Text != "Password" && !string.IsNullOrEmpty(textUsername.Text) && !string.IsNullOrEmpty(textPassword.Text))
             {
-                loadingIndicator.Show(this);
+                loadingIndicator.Show();
                 backgroundWorkerLogin.RunWorkerAsync();
 
             }
@@ -133,7 +137,7 @@ namespace gym_management_system
                 }
                 if (string.IsNullOrEmpty(textPassword.Text))
                 {
-                    textUsername.Text = "Password";
+                    textPassword.Text = "Password";
                     textPassword.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
                     lab_pass_err.Text = "Password Required!";
                 }
@@ -169,7 +173,10 @@ namespace gym_management_system
             {
                 if (employeeModel.AccountStatus == true)
                 {
-                    MessageBox.Show(employeeModel.Name);
+                    Main_Form mainForm = new Main_Form(employeeModel);
+                    this.Visible = false;
+                    mainForm.ShowDialog();
+                    this.Visible = true;
                 }
             }
             else
