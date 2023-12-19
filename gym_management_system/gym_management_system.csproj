@@ -117,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.cs" />
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loading_Indicator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <Compile Include="Service\PackgeService.cs" />
     <Compile Include="Service\SqlService.cs" />
     <Compile Include="Service\TrainerService.cs" />
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loading_Indicator.resx">
       <DependentUpon>Loading_Indicator.cs</DependentUpon>
     </EmbeddedResource>

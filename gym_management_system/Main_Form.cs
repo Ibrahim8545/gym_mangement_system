@@ -24,10 +24,35 @@ namespace gym_management_system
             this.AutoScaleMode = AutoScaleMode.Dpi;
             nb = ButtonHome;
             nb.Checked = true;
-            PictureBoxAccountProfile.Image = employee.Picture;
-            labelName.Text = employee.Name;
-        }
+            if(employee != null)
+            {
+                if (employee.Picture != null)
+                {
+                    PictureBoxAccountProfile.Image = employee.Picture;
+                }
+                else
+                {
+                    Console.WriteLine("Error! No Profile Picture to Load");
+                }
+                labelName.Text = employee.Name;
+            }
+            else
+            {
+                Console.WriteLine("Error! No employee data to load");
+            }
 
+        }
+        public void loadform(object Form)
+        {
+            if (this.mainpanel.Controls.Count > 0)
+                this.mainpanel.Controls.RemoveAt(0);
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.mainpanel.Controls.Add(f);
+            this.mainpanel.Tag = f;
+            f.Show();
+        }
         public Main_Form(EmployeeModel employeeModel)
         {
             InitializeComponent();
@@ -156,6 +181,12 @@ namespace gym_management_system
                 return;
             }
             KryptonButtonSetting(ButtonPayments);
+        }
+
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+            Home home = new Home();
+            loadform(home);
         }
     }
 }

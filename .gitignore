@@ -15,13 +15,6 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
-# Visual Studio Code
-.vscode/
-
-# Rider
-
-# User-specific files
-
 
 # Mono Auto Generated Files
 mono_crash.*
@@ -30,12 +23,7 @@ mono_crash.*
 Thumbs.db
 ehthumbs.db
 
-# Folder config file
-Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Visual Studio cache directory
-.vs2019/
-.vs/

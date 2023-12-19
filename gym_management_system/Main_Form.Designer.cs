@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.Panel_slider = new System.Windows.Forms.Panel();
+            this.labelName = new System.Windows.Forms.Label();
+            this.PictureBoxAccountProfile = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.ButtonPayments = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
@@ -55,13 +57,11 @@
             this.bunifuElipse10 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse11 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse13 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.PictureBoxAccountProfile = new Bunifu.UI.WinForms.BunifuPictureBox();
-            this.labelName = new System.Windows.Forms.Label();
             this.Panel_slider.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAccountProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAccountProfile)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_slider
@@ -76,6 +76,36 @@
             this.Panel_slider.Name = "Panel_slider";
             this.Panel_slider.Size = new System.Drawing.Size(102, 1285);
             this.Panel_slider.TabIndex = 2;
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.BackColor = System.Drawing.Color.Transparent;
+            this.labelName.Font = new System.Drawing.Font("Gilroy-SemiBold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(78)))));
+            this.labelName.Location = new System.Drawing.Point(104, 1092);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(199, 32);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "Adham Elagaty";
+            // 
+            // PictureBoxAccountProfile
+            // 
+            this.PictureBoxAccountProfile.AllowFocused = false;
+            this.PictureBoxAccountProfile.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PictureBoxAccountProfile.AutoSizeHeight = true;
+            this.PictureBoxAccountProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
+            this.PictureBoxAccountProfile.BorderRadius = 33;
+            this.PictureBoxAccountProfile.ErrorImage = null;
+            this.PictureBoxAccountProfile.Image = ((System.Drawing.Image)(resources.GetObject("PictureBoxAccountProfile.Image")));
+            this.PictureBoxAccountProfile.IsCircle = true;
+            this.PictureBoxAccountProfile.Location = new System.Drawing.Point(22, 1075);
+            this.PictureBoxAccountProfile.Name = "PictureBoxAccountProfile";
+            this.PictureBoxAccountProfile.Size = new System.Drawing.Size(66, 66);
+            this.PictureBoxAccountProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxAccountProfile.TabIndex = 0;
+            this.PictureBoxAccountProfile.TabStop = false;
+            this.PictureBoxAccountProfile.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
             // pictureBox1
             // 
@@ -764,34 +794,6 @@
             this.bunifuElipse13.ElipseRadius = 82;
             this.bunifuElipse13.TargetControl = this.ButtonPayments;
             // 
-            // PictureBoxAccountProfile
-            // 
-            this.PictureBoxAccountProfile.AllowFocused = false;
-            this.PictureBoxAccountProfile.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PictureBoxAccountProfile.AutoSizeHeight = true;
-            this.PictureBoxAccountProfile.BorderRadius = 33;
-            this.PictureBoxAccountProfile.Image = ((System.Drawing.Image)(resources.GetObject("PictureBoxAccountProfile.Image")));
-            this.PictureBoxAccountProfile.IsCircle = true;
-            this.PictureBoxAccountProfile.Location = new System.Drawing.Point(22, 1075);
-            this.PictureBoxAccountProfile.Name = "PictureBoxAccountProfile";
-            this.PictureBoxAccountProfile.Size = new System.Drawing.Size(66, 66);
-            this.PictureBoxAccountProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureBoxAccountProfile.TabIndex = 0;
-            this.PictureBoxAccountProfile.TabStop = false;
-            this.PictureBoxAccountProfile.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.BackColor = System.Drawing.Color.Transparent;
-            this.labelName.Font = new System.Drawing.Font("Gilroy-SemiBold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(78)))));
-            this.labelName.Location = new System.Drawing.Point(104, 1092);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(199, 32);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Adham Elagaty";
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -805,12 +807,13 @@
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main_Form";
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Panel_slider.ResumeLayout(false);
             this.Panel_slider.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAccountProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAccountProfile)).EndInit();
             this.ResumeLayout(false);
 
         }

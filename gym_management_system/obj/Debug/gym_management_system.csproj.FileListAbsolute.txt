@@ -101,3 +101,4 @@ D:\Programing\Project\Gym Mangmet System\gym_mangement_system\gym_management_sys
 D:\Programing\Project\Gym Mangmet System\gym_mangement_system\gym_management_system\bin\Debug\Guna.UI2.dll
 D:\Programing\Project\Gym Mangmet System\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
 D:\Programing\Project\Gym Mangmet System\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+D:\Programing\Project\Gym Mangmet System\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Home.resources
