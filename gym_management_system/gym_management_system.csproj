@@ -141,6 +141,7 @@
     <Compile Include="Service\AnnoucementService.cs" />
     <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="Service\MonthOfferService.cs" />
     <Compile Include="Service\PackgeService.cs" />
     <Compile Include="Service\SqlService.cs" />
     <Compile Include="Service\TrainerService.cs" />
