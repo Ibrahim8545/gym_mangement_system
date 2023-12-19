@@ -10,6 +10,7 @@ namespace gym_management_system.Models
     {
         protected int id;
         protected string subject;
+        protected string body;
         protected DateTime date;
         protected EmployeeModel employeeModel;
 
@@ -22,6 +23,7 @@ namespace gym_management_system.Models
 
         public int Id { get { return id; } set { id = value; } }
         public string Subject { get { return subject; } set { subject = value; } }
+        public string Body { get { return body; } set { body = value; } }
         public DateTime Date { get { return date; } set { date = value; } }
         public EmployeeModel EmployeeModel { get { return employeeModel; } set { employeeModel = value; } }
 
