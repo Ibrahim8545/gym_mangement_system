@@ -9,10 +9,11 @@ namespace gym_management_system.Models
     public class ClassModel
     {
         private int id, enrollmentNumber, maxEnrollmentNumber, price;
-        private string name, sessionOneDayName, sessionTwoDayName, status;
+        private string name, sessionOneDayName, sessionTwoDayName;
+        bool status;
         private TrainerModel trainerModel;
 
-        public ClassModel(int id = 0, int enrollmentNumber = 0, int maxEnrollmentNumber = 0, int price = 0, string name = null, string sessionOneDayName = null, string sessionTwoDayName = null, string status = null, TrainerModel trainerModel = null)
+        public ClassModel(int id = 0, int enrollmentNumber = 0, int maxEnrollmentNumber = 0, int price = 0, string name = null, string sessionOneDayName = null, string sessionTwoDayName = null, bool status = false, TrainerModel trainerModel = null)
         {
             Id = id;
             EnrollmentNumber = enrollmentNumber;
@@ -32,7 +33,7 @@ namespace gym_management_system.Models
         public int Price { get { return price; } set { price = value; } }
         public string SessionOneDayName { get {  return sessionOneDayName; } set {  sessionOneDayName = value; } }
         public string SessionTwoDayName { get { return sessionTwoDayName; } set { sessionTwoDayName = value; } }
-        public string Status { get { return status; } set { status = value; } }
+        public bool Status { get { return status; } set { status = value; } }
         public TrainerModel TrainerModel { get {  return trainerModel; } set {  trainerModel = value; } }
         public TrainerModel getTrainerData() {
             List<TrainerModel> trainerModels =  Global.trainerService.Search(trainerModel.Id.ToString(), false, byId: false);
