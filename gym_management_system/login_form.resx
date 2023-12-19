@@ -124,7 +124,7 @@
   <data name="panel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABQAAAANACAYAAAB0bMChAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAA/7JJREFUeF7s/ed7XNl5pQ/rv2gSOedIEARJ5EQwZ4I5p26SndTKWa2WuhWsHKyW
+        DAAACwwBP0AiyAAA/7JJREFUeF7s/ed7XNl5pQ/rv2gSOedIEARJ5EQwZ4I5p26SndTKWa2WuhWsHKyW
         5FaW7ZYseyTLkrNsy3IO0tiyPQ5ymBlbtmes+V3v5/2e9eyzT1WBm+yzD86pvQtcH+7rFLo2gUKhAF11
         az3PetlDD21WodM/sE/duP2PET9UR1d/znqmGkzNvlpdvvHf1eXr31dTM6+ynrFx4PBn1MWrfxLxx6q3
         b5f1TDU4c+G31NmLv6VOn/9N6/3kbg4e+Zw6eDQiutrurwbtHdvVnv0fi/iovAZtZ2zgtbay9wPC+MQ1
@@ -2259,5 +2259,8 @@
   </metadata>
   <metadata name="bunifuElipse3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>343, 17</value>
+  </metadata>
+  <metadata name="backgroundWorkerLogin.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>506, 17</value>
   </metadata>
 </root>

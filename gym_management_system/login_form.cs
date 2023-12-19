@@ -15,9 +15,12 @@ namespace gym_management_system
 {
     public partial class Login_form : Form
     {
+        private EmployeeModel employeeModel = Global.employeeModel;
+        private Loading_Indicator loadingIndicator;
         public Login_form()
         {
             InitializeComponent();
+            loadingIndicator = new Loading_Indicator();
             this.AutoScaleDimensions = new SizeF(96F, 96F);
             this.AutoScaleMode = AutoScaleMode.Dpi;
         }
@@ -104,22 +107,10 @@ namespace gym_management_system
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (textUsername.Text != "Username" && textPassword.Text != "Password")
+            if (textUsername.Text != "Username" && textPassword.Text != "Password" && !string.IsNullOrEmpty(textUsername.Text) && !string.IsNullOrEmpty(textPassword.Text))
             {
-                string username = textUsername.Text, password = textPassword.Text;
-                EmployeeModel employeeModel = Global.employeeModel;
-                employeeModel = Global.employeeService.login(username, password);
-                if (employeeModel != null)
-                {
-                    if (employeeModel.AccountStatus == true)
-                    {
-                        MessageBox.Show(employeeModel.Name);
-                    }
-                }
-                else
-                {
-                    lab_login_error.Text = "Username or Password is InCorrect";
-                }
+                loadingIndicator.Show(this);
+                backgroundWorkerLogin.RunWorkerAsync();
 
             }
             else
@@ -131,6 +122,18 @@ namespace gym_management_system
                 }
                 if (textPassword.Text == "Password")
                 {
+                    textPassword.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
+                    lab_pass_err.Text = "Password Required!";
+                }
+                if (string.IsNullOrEmpty(textUsername.Text))
+                {
+                    textUsername.Text = "Username";
+                    textUsername.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
+                    lab_username_err.Text = "Username Required!";
+                }
+                if (string.IsNullOrEmpty(textPassword.Text))
+                {
+                    textUsername.Text = "Password";
                     textPassword.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
                     lab_pass_err.Text = "Password Required!";
                 }
@@ -150,6 +153,29 @@ namespace gym_management_system
             hide_pass_btn.Visible = false;
             show_pass_btn.Visible = true;
             textPassword.PasswordChar = '\0';
+        }
+
+        private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string username = textUsername.Text, password = textPassword.Text;
+            employeeModel = Global.employeeService.login(username, password);
+        }
+
+        private void backgroundWorkerLogin_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            loadingIndicator.Close();
+            loadingIndicator = new Loading_Indicator();
+            if (employeeModel != null)
+            {
+                if (employeeModel.AccountStatus == true)
+                {
+                    MessageBox.Show(employeeModel.Name);
+                }
+            }
+            else
+            {
+                lab_login_error.Text = "Username or Password is InCorrect";
+            }
         }
     }
 }

@@ -44,6 +44,7 @@
             this.lab_login_error = new System.Windows.Forms.Label();
             this.lab_pass_err = new System.Windows.Forms.Label();
             this.lab_username_err = new System.Windows.Forms.Label();
+            this.backgroundWorkerLogin = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.show_pass_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hide_pass_btn)).BeginInit();
@@ -293,6 +294,11 @@
             this.lab_username_err.Size = new System.Drawing.Size(0, 27);
             this.lab_username_err.TabIndex = 31;
             // 
+            // backgroundWorkerLogin
+            // 
+            this.backgroundWorkerLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLogin_DoWork);
+            this.backgroundWorkerLogin.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLogin_RunWorkerCompleted);
+            // 
             // Login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -328,6 +334,7 @@
         private System.Windows.Forms.PictureBox show_pass_btn;
         private System.Windows.Forms.PictureBox hide_pass_btn;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLogin;
     }
 }
 

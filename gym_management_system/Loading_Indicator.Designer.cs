@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer_fadding = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +50,11 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // timer_fadding
+            // 
+            this.timer_fadding.Interval = 10;
+            this.timer_fadding.Tick += new System.EventHandler(this.timer_fadding_Tick);
+            // 
             // Loading_Indicator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -62,6 +68,8 @@
             this.Opacity = 0.96D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loading_Indicator";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Loading_Indicator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -71,5 +79,6 @@
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer_fadding;
     }
 }
