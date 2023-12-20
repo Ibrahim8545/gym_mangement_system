@@ -114,8 +114,9 @@ namespace gym_management_system.Service
             try
             {
                 List<PackgeModel> packgeModels = new List<PackgeModel>();
-                string statusFilter = includeOnlyActive ? "WHERE status = 'true'" : "";
-                string query = $"SELECT * FROM packge {statusFilter}";
+                string statusFilter = includeOnlyActive ? "WHERE p.status = '1'" : "";
+                string query = $"SELECT p.*, m.* FROM packge p " +
+                               $"LEFT JOIN month_offer m ON p.month_offerID = m.id {statusFilter}";
                 MySqlDataReader reader = Global.sqlService.SqlSelect(query);
                 if (reader.HasRows)
                 {
@@ -128,7 +129,14 @@ namespace gym_management_system.Service
                         int numOfInvatation = Convert.ToInt32(reader["num_of_invatation"]);
                         int discountPercentage = Convert.ToInt32(reader["discount_percentage"]);
                         string status = reader["status"].ToString();
-                        MonthOfferModel monthOffer = new MonthOfferModel(id:monthOfferID);
+
+                        // Read MonthOfferModel properties
+                        int offerId = Convert.ToInt32(reader["month_offerID"]);
+                        int maxNumFreze = Convert.ToInt32(reader["max_num_freze"]);
+                        int numOfMonth = Convert.ToInt32(reader["num_of_months"]);
+                        int price = Convert.ToInt32(reader["price"]);
+
+                        MonthOfferModel monthOffer = new MonthOfferModel(offerId, maxNumFreze, numOfMonth, price);
 
                         PackgeModel pm = new PackgeModel(id, numOfClass, numOfInvatation, discountPercentage, name, status, monthOffer);
                         packgeModels.Add(pm);

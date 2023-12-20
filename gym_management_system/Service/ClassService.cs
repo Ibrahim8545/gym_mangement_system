@@ -100,15 +100,18 @@ namespace gym_management_system.Service
             {
                 List<ClassModel> classModels = new List<ClassModel>();
                 string statusFilter;
-                if (includeOnlyActive)
+                if (onlyAvailable)
                 {
-                    statusFilter = includeOnlyActive ? "WHERE status = '1' AND enrollment_num != max_enrollment_num" : "";
+                    statusFilter = includeOnlyActive ? "WHERE c.status = '1' AND c.enrollment_num != c.max_enrollment_num AND t.status = '1'" : "";
                 }
                 else
                 {
-                    statusFilter = includeOnlyActive ? "WHERE status = '1'" : "";
+                    statusFilter = includeOnlyActive ? "WHERE c.status = '1' AND t.status = '1'" : "";
                 }
-                string query = $"SELECT * FROM class {statusFilter}";
+
+                string query = $"SELECT c.*, t.* FROM class c " +
+                               $"LEFT JOIN trainer t ON c.trainerID = t.id {statusFilter}";
+
                 MySqlDataReader reader = Global.sqlService.SqlSelect(query);
 
                 if (reader.HasRows)
@@ -124,10 +127,24 @@ namespace gym_management_system.Service
                         string sessionTwoDayName = reader["s2_day_name"].ToString();
                         bool status = Convert.ToBoolean(reader["status"]);
                         int trainerID = Convert.ToInt32(reader["trainerID"]);
-                        TrainerModel trainerModel = new TrainerModel(trainerID);
 
-                        ClassModel classModel = new ClassModel(id, enrollmentNumber, maxEnrollmentNumber, price, name, sessionOneDayName, sessionTwoDayName, status, trainerModel);
-                        classModels.Add(classModel);
+                        // Check if trainer status is 1
+                        if (Convert.ToBoolean(reader["status"]))
+                        {
+                            // Read TrainerModel properties
+                            string firstName = reader["first_name"].ToString();
+                            string secondName = reader["second_name"].ToString();
+                            string gender = reader["gender"].ToString();
+                            DateTime birthday = Convert.ToDateTime(reader["brithday"]);
+                            string specialization = reader["specialization"].ToString();
+                            int privateLessonPrice = Convert.ToInt32(reader["private_lesson_price"]);
+                            bool trainerStatus = Convert.ToBoolean(reader["status"]);
+
+                            TrainerModel trainerModel = new TrainerModel(trainerID, firstName, secondName, gender, null, null, birthday, null, specialization, privateLessonPrice, trainerStatus);
+
+                            ClassModel classModel = new ClassModel(id, enrollmentNumber, maxEnrollmentNumber, price, name, sessionOneDayName, sessionTwoDayName, status, trainerModel);
+                            classModels.Add(classModel);
+                        }
                     }
 
                     return classModels;

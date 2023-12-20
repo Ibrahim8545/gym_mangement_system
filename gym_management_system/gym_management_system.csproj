@@ -43,6 +43,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuButton">
       <HintPath>C:\Users\adham\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3(1)\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGradientPanel">
+      <HintPath>C:\Users\adham\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3(1)\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuGradientPanel.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>C:\Users\adham\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3(1)\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
     </Reference>
@@ -220,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\system_image\bars-sort 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\system_image\wifi-slash 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
