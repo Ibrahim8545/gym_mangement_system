@@ -17,6 +17,7 @@ namespace gym_management_system
         private KryptonCheckButton nb = new KryptonCheckButton();
         private List<Form> form = new List<Form>();
         public EmployeeModel employee;
+        private Home home;
         public Main_Form()
         {
             InitializeComponent();
@@ -61,8 +62,23 @@ namespace gym_management_system
             nb = ButtonHome;
             nb.Checked = true;
             employee = employeeModel;
-            PictureBoxAccountProfile.Image = employee.Picture;
-            labelName.Text = employee.Name;
+            if (employee != null)
+            {
+                home = new Home(employeeModel);
+                if (employee.Picture != null)
+                {
+                    PictureBoxAccountProfile.Image = employee.Picture;
+                }
+                else
+                {
+                    Console.WriteLine("Error! No Profile Picture to Load");
+                }
+                labelName.Text = employee.Name;
+            }
+            else
+            {
+                Console.WriteLine("Error! No employee data to load");
+            }
         }
 
         private void timer_slider_hide_Tick(object sender, EventArgs e)
@@ -185,7 +201,6 @@ namespace gym_management_system
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            Home home = new Home();
             loadform(home);
         }
     }

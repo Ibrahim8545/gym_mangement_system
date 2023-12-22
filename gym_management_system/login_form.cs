@@ -113,6 +113,8 @@ namespace gym_management_system
             }
             if (textUsername.Text != "Username" && textPassword.Text != "Password" && !string.IsNullOrEmpty(textUsername.Text) && !string.IsNullOrEmpty(textPassword.Text))
             {
+                textUsername.Enabled = false;
+                textPassword.Enabled = false;
                 loadingIndicator.Show();
                 backgroundWorkerLogin.RunWorkerAsync();
 
@@ -168,6 +170,8 @@ namespace gym_management_system
         private void backgroundWorkerLogin_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             loadingIndicator.Close();
+            textUsername.Enabled = true;
+            textPassword.Enabled = true;
             loadingIndicator = new Loading_Indicator();
             if (employeeModel != null)
             {

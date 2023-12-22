@@ -109,6 +109,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::gym_management_system.Properties.Resources.bars_sort_1;
             this.pictureBox1.Location = new System.Drawing.Point(18, 15);
             this.pictureBox1.Name = "pictureBox1";
@@ -139,6 +140,7 @@
             this.ButtonPayments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonPayments.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonPayments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonPayments.Location = new System.Drawing.Point(6, 544);
             this.ButtonPayments.Name = "ButtonPayments";
             this.ButtonPayments.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
@@ -235,6 +237,7 @@
             this.ButtonSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSubscriptions.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonSubscriptions.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonSubscriptions.Location = new System.Drawing.Point(6, 439);
             this.ButtonSubscriptions.Name = "ButtonSubscriptions";
             this.ButtonSubscriptions.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
@@ -316,13 +319,13 @@
             this.ButtonSubscriptions.StateTracking.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.ButtonSubscriptions.StateTracking.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Word;
             this.ButtonSubscriptions.TabIndex = 28;
-            this.ButtonSubscriptions.Values.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.Image")));
-            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedNormal = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImageCheckedNormal")));
-            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedPressed = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImageCheckedPressed")));
-            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedTracking = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImageCheckedTracking")));
-            this.ButtonSubscriptions.Values.ImageStates.ImageNormal = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImageNormal")));
-            this.ButtonSubscriptions.Values.ImageStates.ImagePressed = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImagePressed")));
-            this.ButtonSubscriptions.Values.ImageStates.ImageTracking = ((System.Drawing.Image)(resources.GetObject("ButtonSubscriptions.Values.ImageStates.ImageTracking")));
+            this.ButtonSubscriptions.Values.Image = global::gym_management_system.Properties.Resources.subscriptions1;
+            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedNormal = global::gym_management_system.Properties.Resources.subscriptions_purple;
+            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedPressed = global::gym_management_system.Properties.Resources.subscriptions_purple;
+            this.ButtonSubscriptions.Values.ImageStates.ImageCheckedTracking = global::gym_management_system.Properties.Resources.subscriptions_purple;
+            this.ButtonSubscriptions.Values.ImageStates.ImageNormal = global::gym_management_system.Properties.Resources.subscriptions2;
+            this.ButtonSubscriptions.Values.ImageStates.ImagePressed = global::gym_management_system.Properties.Resources.subscriptions_purple;
+            this.ButtonSubscriptions.Values.ImageStates.ImageTracking = global::gym_management_system.Properties.Resources.subscriptions3;
             this.ButtonSubscriptions.Values.Text = "Subscription";
             this.ButtonSubscriptions.Click += new System.EventHandler(this.ButtonSubscriptions_Click);
             // 
@@ -331,6 +334,7 @@
             this.ButtonEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonEmployees.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonEmployees.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonEmployees.Location = new System.Drawing.Point(6, 330);
             this.ButtonEmployees.Name = "ButtonEmployees";
             this.ButtonEmployees.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
@@ -412,13 +416,13 @@
             this.ButtonEmployees.StateTracking.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.ButtonEmployees.StateTracking.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Word;
             this.ButtonEmployees.TabIndex = 27;
-            this.ButtonEmployees.Values.Image = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.Image")));
-            this.ButtonEmployees.Values.ImageStates.ImageCheckedNormal = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImageCheckedNormal")));
-            this.ButtonEmployees.Values.ImageStates.ImageCheckedPressed = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImageCheckedPressed")));
-            this.ButtonEmployees.Values.ImageStates.ImageCheckedTracking = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImageCheckedTracking")));
-            this.ButtonEmployees.Values.ImageStates.ImageNormal = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImageNormal")));
-            this.ButtonEmployees.Values.ImageStates.ImagePressed = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImagePressed")));
-            this.ButtonEmployees.Values.ImageStates.ImageTracking = ((System.Drawing.Image)(resources.GetObject("ButtonEmployees.Values.ImageStates.ImageTracking")));
+            this.ButtonEmployees.Values.Image = global::gym_management_system.Properties.Resources.employees;
+            this.ButtonEmployees.Values.ImageStates.ImageCheckedNormal = global::gym_management_system.Properties.Resources.employees_purple;
+            this.ButtonEmployees.Values.ImageStates.ImageCheckedPressed = global::gym_management_system.Properties.Resources.employees_purple;
+            this.ButtonEmployees.Values.ImageStates.ImageCheckedTracking = global::gym_management_system.Properties.Resources.employees_purple;
+            this.ButtonEmployees.Values.ImageStates.ImageNormal = global::gym_management_system.Properties.Resources.employees;
+            this.ButtonEmployees.Values.ImageStates.ImagePressed = global::gym_management_system.Properties.Resources.employees_purple;
+            this.ButtonEmployees.Values.ImageStates.ImageTracking = global::gym_management_system.Properties.Resources.employees;
             this.ButtonEmployees.Values.Text = "Employees";
             this.ButtonEmployees.Click += new System.EventHandler(this.ButtonEmployees_Click);
             // 
@@ -427,6 +431,7 @@
             this.ButtonAnnouncement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonAnnouncement.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonAnnouncement.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonAnnouncement.Location = new System.Drawing.Point(6, 221);
             this.ButtonAnnouncement.Name = "ButtonAnnouncement";
             this.ButtonAnnouncement.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
@@ -523,6 +528,7 @@
             this.ButtonMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonMembers.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonMembers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMembers.Location = new System.Drawing.Point(6, 112);
             this.ButtonMembers.Name = "ButtonMembers";
             this.ButtonMembers.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
@@ -604,13 +610,13 @@
             this.ButtonMembers.StateTracking.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.ButtonMembers.StateTracking.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Word;
             this.ButtonMembers.TabIndex = 25;
-            this.ButtonMembers.Values.Image = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.Image")));
-            this.ButtonMembers.Values.ImageStates.ImageCheckedNormal = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImageCheckedNormal")));
-            this.ButtonMembers.Values.ImageStates.ImageCheckedPressed = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImageCheckedPressed")));
-            this.ButtonMembers.Values.ImageStates.ImageCheckedTracking = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImageCheckedTracking")));
-            this.ButtonMembers.Values.ImageStates.ImageNormal = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImageNormal")));
-            this.ButtonMembers.Values.ImageStates.ImagePressed = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImagePressed")));
-            this.ButtonMembers.Values.ImageStates.ImageTracking = ((System.Drawing.Image)(resources.GetObject("ButtonMembers.Values.ImageStates.ImageTracking")));
+            this.ButtonMembers.Values.Image = global::gym_management_system.Properties.Resources.users;
+            this.ButtonMembers.Values.ImageStates.ImageCheckedNormal = global::gym_management_system.Properties.Resources.users_purple;
+            this.ButtonMembers.Values.ImageStates.ImageCheckedPressed = global::gym_management_system.Properties.Resources.users_purple;
+            this.ButtonMembers.Values.ImageStates.ImageCheckedTracking = global::gym_management_system.Properties.Resources.users_purple;
+            this.ButtonMembers.Values.ImageStates.ImageNormal = global::gym_management_system.Properties.Resources.users;
+            this.ButtonMembers.Values.ImageStates.ImagePressed = global::gym_management_system.Properties.Resources.users_purple;
+            this.ButtonMembers.Values.ImageStates.ImageTracking = global::gym_management_system.Properties.Resources.users;
             this.ButtonMembers.Values.Text = "Members";
             this.ButtonMembers.Click += new System.EventHandler(this.ButtonMembers_Click);
             // 
@@ -619,6 +625,7 @@
             this.ButtonHome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonHome.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorMini;
+            this.ButtonHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonHome.Location = new System.Drawing.Point(6, 3);
             this.ButtonHome.Name = "ButtonHome";
             this.ButtonHome.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));

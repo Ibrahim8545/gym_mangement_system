@@ -17,6 +17,7 @@ namespace gym_management_system.Models
             Id = id;
             NumOfClass = numOfClass;
             NumOfInvatation = numOfInvatation;
+            DiscountPercentage = discountPercentage;
             Name = name;
             Status = status;
             MonthOffer = monthOffer;

@@ -17,6 +17,9 @@ namespace gym_management_system
         public static TrainerService trainerService = new TrainerService();
         public static ClassService classService = new ClassService();
         public static PackgeService packgeService = new PackgeService();
+        public static MonthSubscriptionService monthSubscriptionService = new MonthSubscriptionService();
+        public static ClassSubscriptionService classSubscriptionService = new ClassSubscriptionService();
+        public static PackgeSupscribtionService PackgeSupscribtionService = new PackgeSupscribtionService();
         public static MonthOfferService monthOfferService = new MonthOfferService();
         public static EmployeeModel employeeModel = EmployeeModel.Instance;
         public static MangePassword mangePassword = new MangePassword();

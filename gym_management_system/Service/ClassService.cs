@@ -162,6 +162,83 @@ namespace gym_management_system.Service
             }
         }
 
+        public List<ClassModel> GetUnsubscribedClasses(int memberId, bool includeOnlyActive = false, bool onlyAvailable = false)
+        {
+            try
+            {
+                List<ClassModel> classModels = new List<ClassModel>();
+                string statusFilter;
+                string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                string dateFilter = $"AND DATE_ADD(start_date, INTERVAL 1 MONTH) >= '{currentDate}'";
+
+                if (onlyAvailable)
+                {
+                    statusFilter = includeOnlyActive ? "WHERE c.status = '1' AND c.enrollment_num != c.max_enrollment_num AND t.status = '1'" : "";
+                }
+                else
+                {
+                    statusFilter = includeOnlyActive ? "WHERE c.status = '1' AND t.status = '1'" : "";
+                }
+
+                string query = $"SELECT c.*, t.*, cs.memberID, cs.start_date " +
+                               $"FROM class c " +
+                               $"LEFT JOIN trainer t ON c.trainerID = t.id " +
+                               $"LEFT JOIN class_subscription cs ON c.id = cs.classID AND cs.memberID = {memberId} {dateFilter} " +
+                               $"{statusFilter}";
+
+                MySqlDataReader reader = Global.sqlService.SqlSelect(query);
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["id"]);
+                        string name = reader["name"].ToString();
+                        int enrollmentNumber = Convert.ToInt32(reader["enrollment_num"]);
+                        int maxEnrollmentNumber = Convert.ToInt32(reader["max_enrollment_num"]);
+                        int price = Convert.ToInt32(reader["price"]);
+                        string sessionOneDayName = reader["s1_day_name"].ToString();
+                        string sessionTwoDayName = reader["s2_day_name"].ToString();
+                        bool status = Convert.ToBoolean(reader["status"]);
+                        int trainerID = Convert.ToInt32(reader["trainerID"]);
+
+                        // Check if class is not subscribed by the member
+                        int classMemberID = reader["memberID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["memberID"]);
+
+                        if (classMemberID == 0)
+                        {
+                            // Read TrainerModel properties
+                            string firstName = reader["first_name"].ToString();
+                            string secondName = reader["second_name"].ToString();
+                            string gender = reader["gender"].ToString();
+                            DateTime birthday = Convert.ToDateTime(reader["brithday"]);
+                            string specialization = reader["specialization"].ToString();
+                            int privateLessonPrice = Convert.ToInt32(reader["private_lesson_price"]);
+                            bool trainerStatus = Convert.ToBoolean(reader["status"]);
+
+                            TrainerModel trainerModel = new TrainerModel(trainerID, firstName, secondName, gender, null, null, birthday, null, specialization, privateLessonPrice, trainerStatus);
+
+                            ClassModel classModel = new ClassModel(id, enrollmentNumber, maxEnrollmentNumber, price, name, sessionOneDayName, sessionTwoDayName, status, trainerModel);
+                            classModels.Add(classModel);
+                        }
+                    }
+
+                    return classModels;
+                }
+                else
+                {
+                    Console.WriteLine("Error getting from GetUnsubscribedClasses: No records found");
+                    return null;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error getting from MySql GetUnsubscribedClasses: {ex.Message}");
+                return null;
+            }
+        }
+
+
         public bool UpdateClassAttributes(ClassModel classModel, bool name = false, bool enrollmentNumber = false, bool maxEnrollmentNumber = false, bool price = false, bool sessionOneDayName = false, bool sessionTwoDayName = false, bool status = false, bool trainer = false)
         {
             try

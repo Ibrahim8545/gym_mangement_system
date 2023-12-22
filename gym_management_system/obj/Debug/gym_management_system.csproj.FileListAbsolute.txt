@@ -145,7 +145,6 @@ D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.csproj.AssemblyReference.cache
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.csproj.SuggestedBindingRedirects.cache
-D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Home.resources
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Loading_Indicator.resources
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Login_form.resources
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Main_Form.resources
@@ -158,3 +157,9 @@ D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.pdb
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.dll
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.xml
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.subscribe.resources
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.xml
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Home.resources

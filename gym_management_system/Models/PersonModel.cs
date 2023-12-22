@@ -4,12 +4,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace gym_management_system.Models
 {
     public abstract class PersonModel
     {
-        protected int id;
+        protected int id, age;
         protected string firstName, secondName, gender, email, phoneNumber, base64Image;
         protected DateTime brithday;
         protected Image picture;
@@ -35,6 +36,18 @@ namespace gym_management_system.Models
         public DateTime Brithday { get { return brithday; } set { brithday = value; } }
         public Image Picture { get { return picture; } set { picture = value; } }
         public string Base64Image { get { return base64Image; } set { base64Image = value; } }
+        public int Age { get { try { return CalculateAge(); } catch { Console.WriteLine("Error! to get age"); return 0; } } }
+        private int CalculateAge()
+        {
+            DateTime currentDate = DateTime.Now;
+            int age = currentDate.Year - Brithday.Year;
+            if (Brithday.Date > currentDate.AddYears(-age))
+            {
+                age--;
+            }
+
+            return age;
+        }
         public abstract int generateId();
     }
 }

@@ -8,9 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace gym_management_system
 {
@@ -20,7 +23,16 @@ namespace gym_management_system
         private List<PackgeModel> packgeModels;
         private List<MonthOfferModel> monthOfferModels;
         private List<TrainerModel> trainersModels;
+        private List<Image> images = new List<Image>();
+        private EmployeeModel employeeModel;
         private bool firstGetData = false;
+        public class DoubleBufferedPanel : Panel
+        {
+            public DoubleBufferedPanel()
+            {
+                DoubleBuffered = true;
+            }
+        }
         public Home()
         {
             InitializeComponent();
@@ -30,32 +42,79 @@ namespace gym_management_system
             backgroundWorkerMonth.RunWorkerAsync();
             backgroundWorkerClsss.RunWorkerAsync();
             backgroundWorkertrainer.RunWorkerAsync();
+            images.Add(Image.FromFile("system_image\\pkg1_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg2_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg3_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg4_light.png"));
         }
 
-        private void customPackgePanel(int x, int y, PackgeModel packgeModel)
+        public Home(EmployeeModel employeeModel)
         {
-            Bunifu.UI.WinForms.BunifuGradientPanel panel = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            InitializeComponent();
+            panelschdata.Visible = false;
+            backgroundWorkerclassSch.RunWorkerAsync();
+            backgroundWorkerpackages.RunWorkerAsync();
+            backgroundWorkerMonth.RunWorkerAsync();
+            backgroundWorkerClsss.RunWorkerAsync();
+            backgroundWorkertrainer.RunWorkerAsync();
+            images.Add(Image.FromFile("system_image\\pkg1_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg2_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg3_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg4_light.png"));
+            this.employeeModel = employeeModel;
+        }
+        public void resize_shedual_min()
+        {
+            int x =  panel4.Location.X-21, y = panel4.Location.Y;
+            DoubleBuffered = true;
+            panel4.Location = new Point(x, y);
+            DoubleBuffered = true;
+        }
+        public void resize_shedual_max()
+        {
+            int x = panel4.Location.X + 21, y = panel4.Location.Y;
+            DoubleBuffered = true;
+            panel4.Location = new Point(x, y);
+            DoubleBuffered = true;
+        }
+
+        private void customPackgePanel(int x, int y, PackgeModel packgeModel, Image image)
+        {
+            DoubleBufferedPanel panel = new DoubleBufferedPanel();
             Label lName = new Label();
             Label LMD = new Label();
             Label LCD = new Label();
             Label LNI = new Label();
+            Label Discount = new Label();
+
+            SuspendLayout();
+
+            BunifuElipse b = new BunifuElipse();
+            b.TargetControl = panel;
+            b.ElipseRadius = 50;
+
             panel.Controls.Add(lName);
             panel.Controls.Add(LMD);
             panel.Controls.Add(LCD);
             panel.Controls.Add(LNI);
+            panel.Controls.Add(Discount);
+            panel.ForeColor = Color.White;
+            panel.BackColor = Color.Transparent;
+            panel.BackgroundImage = image;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
             Font labelFontNP = new Font(new FontFamily("Gilroy-SemiBold"), 34, FontStyle.Bold, GraphicsUnit.Pixel);
             Font labelFont = new Font(new FontFamily("Gilroy-SemiBold"), 12, FontStyle.Bold, GraphicsUnit.Point);
-            panel.BorderRadius = 50;
-            panel.Size = new System.Drawing.Size(367, 199);
+            panel.Size = new System.Drawing.Size(390, 230);
             panel.Location = new System.Drawing.Point(x, y);
             panel.Tag = packgeModel;
+            panel.Cursor = Cursors.Hand;
             lName.Font = labelFontNP;
             lName.Text = packgeModel.Name;
             lName.Location = new System.Drawing.Point(2, 53);
             lName.Size = new Size(293, 49);
             lName.Tag = packgeModel;
             LMD.Font = labelFont;
-            LMD.Text = packgeModel.MonthOffer.NumOfMonth + " Month + " + packgeModel.MonthOffer.MaxNumFreze + " Freze day";
+            LMD.Text = packgeModel.MonthOffer.NumOfMonth + " Month + " + packgeModel.MonthOffer.MaxNumFreze + " Freeze day";
             LMD.Location = new System.Drawing.Point(8, 102);
             LMD.Size = new Size(280, 29);
             LMD.Tag = packgeModel;
@@ -65,40 +124,60 @@ namespace gym_management_system
             LCD.Size = new Size(280, 29);
             LCD.Tag = packgeModel;
             LNI.Font = labelFont;
-            LNI.Text = packgeModel.NumOfInvatation + " Invatiation";
+            LNI.Text = packgeModel.NumOfInvatation + " Invitation";
             LNI.Location = new System.Drawing.Point(8, 160);
             LNI.Size = new Size(280, 29);
             LNI.Tag = packgeModel;
+            Discount.Font = labelFont;
+            Discount.Text = packgeModel.DiscountPercentage + "% Discount";
+            Discount.Location = new System.Drawing.Point(8, 191);
+            Discount.Size = new Size(280, 29);
+            Discount.Tag = packgeModel;
+
+            ResumeLayout();
+
             panelPackage.Controls.Add(panel);
             panel.Click += new System.EventHandler(panalPackge_Click);
             LNI.Click += new System.EventHandler(panalPackge_Click);
             lName.Click += new System.EventHandler(panalPackge_Click);
             LMD.Click += new System.EventHandler(panalPackge_Click);
             LCD.Click += new System.EventHandler(panalPackge_Click);
+            Discount.Click += new System.EventHandler(panalPackge_Click);
         }
 
-        private void customMonthPanel(int x, int y, MonthOfferModel monthOfferModel)
+        private void customMonthPanel(int x, int y, MonthOfferModel monthOfferModel, Image image)
         {
-            Bunifu.UI.WinForms.BunifuGradientPanel panel = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            DoubleBufferedPanel panel = new DoubleBufferedPanel();
             Label lName = new Label();
             Label LFD = new Label();
             Label LPD = new Label();
+
+            SuspendLayout();
+
+            BunifuElipse b = new BunifuElipse();
+            b.TargetControl = panel;
+            b.ElipseRadius = 50;
+
             panel.Controls.Add(lName);
             panel.Controls.Add(LFD);
             panel.Controls.Add(LPD);
             Font labelFontNP = new Font(new FontFamily("Gilroy-SemiBold"), 34, FontStyle.Bold, GraphicsUnit.Pixel);
             Font labelFont = new Font(new FontFamily("Gilroy-SemiBold"), 12, FontStyle.Bold, GraphicsUnit.Point);
-            panel.BorderRadius = 50;
-            panel.Size = new System.Drawing.Size(367, 199);
+            panel.Size = new System.Drawing.Size(390, 230);
             panel.Location = new System.Drawing.Point(x, y);
             panel.Tag = monthOfferModel;
+            panel.Cursor = Cursors.Hand;
+            panel.ForeColor = Color.White;
+            panel.BackColor = Color.Transparent;
+            panel.BackgroundImage = image;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
             lName.Font = labelFontNP;
             lName.Text = monthOfferModel.NumOfMonth + " Month";
             lName.Location = new System.Drawing.Point(2, 53);
             lName.Size = new Size(293, 49);
             lName.Tag = monthOfferModel;
             LFD.Font = labelFont;
-            LFD.Text = monthOfferModel.MaxNumFreze + " Freze Number";
+            LFD.Text = monthOfferModel.MaxNumFreze + " Freeze Number";
             LFD.Location = new System.Drawing.Point(8, 102);
             LFD.Size = new Size(280, 29);
             LFD.Tag = monthOfferModel;
@@ -107,6 +186,9 @@ namespace gym_management_system
             LPD.Location = new System.Drawing.Point(8, 131);
             LPD.Size = new Size(280, 29);
             LPD.Tag = monthOfferModel;
+
+            ResumeLayout();
+
             panelMonth.Controls.Add(panel);
             panel.Click += new System.EventHandler(panalMonth_Click);
             lName.Click += new System.EventHandler(panalMonth_Click);
@@ -114,14 +196,22 @@ namespace gym_management_system
             LPD.Click += new System.EventHandler(panalMonth_Click);
         }
 
-        private void customClassPanel(int x, int y, ClassModel classModel)
+        private void customClassPanel(int x, int y, ClassModel classModel, Image image)
         {
-            Bunifu.UI.WinForms.BunifuGradientPanel panel = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            DoubleBufferedPanel panel = new DoubleBufferedPanel();
             Label lName = new Label();
             Label LS1D = new Label();
             Label LS2D = new Label();
             Label LTN = new Label();
             Label LP = new Label();
+
+            SuspendLayout();
+
+            BunifuElipse b = new BunifuElipse();
+            b.TargetControl = panel;
+            b.ElipseRadius = 50;
+
+
             panel.Controls.Add(lName);
             panel.Controls.Add(LS1D);
             panel.Controls.Add(LS2D);
@@ -129,10 +219,14 @@ namespace gym_management_system
             panel.Controls.Add(LP);
             Font labelFontNP = new Font(new FontFamily("Gilroy-SemiBold"), 34, FontStyle.Bold, GraphicsUnit.Pixel);
             Font labelFont = new Font(new FontFamily("Gilroy-SemiBold"), 12, FontStyle.Bold, GraphicsUnit.Point);
-            panel.BorderRadius = 50;
-            panel.Size = new System.Drawing.Size(367, 199);
+            panel.Size = new System.Drawing.Size(390, 230);
             panel.Location = new System.Drawing.Point(x, y);
             panel.Tag = classModel;
+            panel.Cursor = Cursors.Hand;
+            panel.ForeColor = Color.White;
+            panel.BackColor = Color.Transparent;
+            panel.BackgroundImage = image;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
             lName.Font = labelFontNP;
             lName.Text = classModel.Name;
             lName.Location = new System.Drawing.Point(2, 33);
@@ -159,6 +253,10 @@ namespace gym_management_system
             LP.Size = new Size(280, 29);
             LP.Tag = classModel;
             panelClass.Controls.Add(panel);
+
+            ResumeLayout();
+
+
             panel.Click += new System.EventHandler(panalClass_Click);
             lName.Click += new System.EventHandler(panalClass_Click);
             LS1D.Click += new System.EventHandler(panalClass_Click);
@@ -167,23 +265,34 @@ namespace gym_management_system
             LP.Click += new System.EventHandler(panalClass_Click);
         }
 
-        private void customTrainerPanel(int x, int y, TrainerModel trainerModel)
+        private void customTrainerPanel(int x, int y, TrainerModel trainerModel, Image image)
         {
-            Bunifu.UI.WinForms.BunifuGradientPanel panel = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            DoubleBufferedPanel panel = new DoubleBufferedPanel();
             Label lName = new Label();
             Label LSD = new Label();
             Label LPD = new Label();
+
+            SuspendLayout();
+
+            BunifuElipse b = new BunifuElipse();
+            b.TargetControl = panel;
+            b.ElipseRadius = 50;
+
             panel.Controls.Add(lName);
             panel.Controls.Add(LSD);
             panel.Controls.Add(LPD);
             Font labelFontNP = new Font(new FontFamily("Gilroy-SemiBold"), 34, FontStyle.Bold, GraphicsUnit.Pixel);
             Font labelFont = new Font(new FontFamily("Gilroy-SemiBold"), 12, FontStyle.Bold, GraphicsUnit.Point);
-            panel.BorderRadius = 50;
-            panel.Size = new System.Drawing.Size(367, 199);
+            panel.Size = new System.Drawing.Size(390, 230);
             panel.Location = new System.Drawing.Point(x, y);
+            panel.ForeColor = Color.White;
+            panel.BackColor = Color.Transparent;
             panel.Tag = trainerModel;
+            panel.Cursor = Cursors.Hand;
             lName.Font = labelFontNP;
             lName.Text = trainerModel.Name;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
+            panel.BackgroundImage = image;
             lName.Location = new System.Drawing.Point(2, 68);
             lName.Size = new Size(293, 49);
             lName.Tag = trainerModel;
@@ -198,6 +307,10 @@ namespace gym_management_system
             LPD.Size = new Size(280, 29);
             LPD.Tag = trainerModel;
             panelTrainer.Controls.Add(panel);
+
+            ResumeLayout();
+
+
             panel.Click += new System.EventHandler(panalTrainer_Click);
             lName.Click += new System.EventHandler(panalTrainer_Click);
             LSD.Click += new System.EventHandler(panalTrainer_Click);
@@ -208,14 +321,16 @@ namespace gym_management_system
         {
             if (sender is Control control)
             {
-                if ((control.Parent is Bunifu.UI.WinForms.BunifuGradientPanel panel && panel.Tag is PackgeModel packgeModel))
+                if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is PackgeModel packgeModel))
                 {
-                    MessageBox.Show($"Clicked on {packgeModel.Name}");
+                    subscribe subscribe = new subscribe(packgeModel, panel.BackgroundImage, employeeModel);
+                    subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is PackgeModel packgeModel1)
                 {
-                    MessageBox.Show($"Clicked on {packgeModel1.Name}");
+                    subscribe subscribe = new subscribe(packgeModel1, control.BackgroundImage, employeeModel);
+                    subscribe.ShowDialog();
                 }
             }
         }
@@ -224,14 +339,16 @@ namespace gym_management_system
         {
             if (sender is Control control)
             {
-                if ((control.Parent is Bunifu.UI.WinForms.BunifuGradientPanel panel && panel.Tag is MonthOfferModel monthOfferModel))
+                if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is MonthOfferModel monthOfferModel))
                 {
-                    MessageBox.Show($"Clicked on {monthOfferModel.Price}");
+                    subscribe subscribe = new subscribe(monthOfferModel, panel.BackgroundImage, employeeModel);
+                    subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is MonthOfferModel monthOfferModel1)
                 {
-                    MessageBox.Show($"Clicked on {monthOfferModel1.Price}");
+                    subscribe subscribe = new subscribe(monthOfferModel1, control.BackgroundImage, employeeModel);
+                    subscribe.ShowDialog();
                 }
             }
         }
@@ -742,10 +859,12 @@ namespace gym_management_system
             int x = 10;
             if(packgeModels != null)
             {
+                int count = 0;
                 foreach (PackgeModel model in packgeModels)
                 {
-                    customPackgePanel(x, 32, model);
-                    x += 400;
+                    customPackgePanel(x, 32, model, images[count%4]);
+                    x += 414;
+                    count++;
                 }
                 panelloadingpackge.Visible = false;
                 panelPackage.Visible = true;
@@ -796,10 +915,12 @@ namespace gym_management_system
             int x = 10;
             if (monthOfferModels != null)
             {
+                int count = 0;
                 foreach (MonthOfferModel model in monthOfferModels)
                 {
-                    customMonthPanel(x, 32, model);
-                    x += 400;
+                    customMonthPanel(x, 32, model, images[count % 4]);
+                    x += 414;
+                    count++;
                 }
                 panelloadingmonth.Visible = false;
                 panelMonth.Visible = true;
@@ -846,10 +967,12 @@ namespace gym_management_system
             int x = 10;
             if (classModels != null)
             {
+                int count = 0;
                 foreach (ClassModel model in classModels)
                 {
-                    customClassPanel(x, 32, model);
-                    x += 400;
+                    customClassPanel(x, 32, model, images[count % 4]);
+                    x += 414;
+                    count++;
                 }
                 panelloadingclass.Visible = false;
                 panelClass.Visible = true;
@@ -903,10 +1026,12 @@ namespace gym_management_system
             int x = 10;
             if (trainersModels != null)
             {
+                int count = 0;
                 foreach (TrainerModel model in trainersModels)
                 {
-                    customTrainerPanel(x, 32, model);
-                    x += 400;
+                    customTrainerPanel(x, 32, model, images[count % 4]);
+                    x += 414;
+                    count++;
                 }
                 panelloadingtrainer.Visible = false;
                 panelTrainer.Visible = true;

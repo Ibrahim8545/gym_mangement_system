@@ -15,7 +15,9 @@ namespace gym_management_system.Service
         private static string uid = "avnadmin";
         private static string password = "AVNS_ZGEQYkVNAEWmL20ib5_";
         private static int port = 10361;
-        private string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};PORT={port};";
+        private static string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};PORT={port};";
+        public static string ConnectionString { get { return connectionString; } }
+        public MySqlConnection connection = new MySqlConnection(ConnectionString);
 
         public MySqlDataReader SqlSelect(string query)
         {
