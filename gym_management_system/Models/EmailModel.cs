@@ -13,12 +13,14 @@ namespace gym_management_system.Models
         protected string body;
         protected DateTime date;
         protected EmployeeModel employeeModel;
+        protected PersonModel personModel;
 
-        protected EmailModel(int id = 0, string subject = null, DateTime date = default, EmployeeModel employeeModel = null) { 
+        protected EmailModel(int id = 0, string subject = null, DateTime date = default, EmployeeModel employeeModel = null, PersonModel personModel = null) { 
             Id = id;
             Subject = subject;
             Date = date;
             EmployeeModel = employeeModel;
+            PersonModel = personModel;
         }
 
         public int Id { get { return id; } set { id = value; } }
@@ -26,6 +28,7 @@ namespace gym_management_system.Models
         public string Body { get { return body; } set { body = value; } }
         public DateTime Date { get { return date; } set { date = value; } }
         public EmployeeModel EmployeeModel { get { return employeeModel; } set { employeeModel = value; } }
+        public PersonModel PersonModel { get { return personModel; } set {  personModel = value; } }
 
         public EmployeeModel getEmployeeData()
         {

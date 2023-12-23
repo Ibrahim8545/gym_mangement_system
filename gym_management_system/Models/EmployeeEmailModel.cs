@@ -15,8 +15,8 @@ namespace gym_management_system.Models
             EmployeeModel = employeeModel1;
         }
 
-        public EmployeeModel EmployeeModel1 { get { return employeeModel1; } set { employeeModel1 = value; } }
-
+        public EmployeeModel EmployeeModel1 { get { return employeeModel1; } set { employeeModel1 = value; PersonModel = employeeModel; } }
+        
         public override PersonModel getreciverData()
         {
             List<EmployeeModel> employeeModels = Global.employeeService.Search(employeeModel1.Id.ToString(), false, byId: false);

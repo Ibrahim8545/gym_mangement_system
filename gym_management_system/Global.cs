@@ -22,9 +22,11 @@ namespace gym_management_system
         public static PackgeSupscribtionService PackgeSupscribtionService = new PackgeSupscribtionService();
         public static PrivateSubscriptionService PrivateSubscriptionService = new PrivateSubscriptionService();
         public static PaymentService paymentService = new PaymentService();
+        public static EmailService emailService = new EmailService();
         public static MonthOfferService monthOfferService = new MonthOfferService();
         public static EmployeeModel employeeModel = EmployeeModel.Instance;
         public static MangePassword mangePassword = new MangePassword();
         public static MangeImage mangeImage = new MangeImage();
+        public static MangeDataGrid mangeDataGrid = new MangeDataGrid();
     }
 }

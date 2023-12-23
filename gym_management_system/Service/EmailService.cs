@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using gym_management_system.Models;
+using MySql.Data.MySqlClient;
 
 namespace gym_management_system.Service
 {
     public class EmailService
     {
-        public bool sendEmail(string recipientEmail, string subject, string body, Image image = null) 
+        public bool sendEmail(EmailModel emailModel, Image image = null) 
         {
             string senderEmail = "pulseupgym@gmail.com";
             string senderPassword = "gpmr vcnt czsm rtva";
@@ -25,10 +27,10 @@ namespace gym_management_system.Service
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(senderEmail, senderPassword);
                 smtpClient.EnableSsl = true;
-                using (MailMessage mailMessage = new MailMessage(senderEmail, recipientEmail))
+                using (MailMessage mailMessage = new MailMessage(senderEmail, emailModel.PersonModel.Email))
                 {
-                    mailMessage.Subject = subject;
-                    mailMessage.Body = body;
+                    mailMessage.Subject = emailModel.Subject;
+                    mailMessage.Body = emailModel.Body;
                     if(image != null)
                     {
                         ImageConverter converter = new ImageConverter();
@@ -48,6 +50,43 @@ namespace gym_management_system.Service
                         return false;
                     }
                 }
+            }
+        }
+
+        public bool AddMemberEmail(MemberEmailModel memberEmailModel, Image image = null)
+        {
+            try
+            {
+                if (sendEmail(memberEmailModel, image))
+                {
+                    string query = $"INSERT INTO member_email (subject, date, memberID, employeeID) VALUES " +
+                               $"('{memberEmailModel.Subject}', now(), " +
+                               $"{memberEmailModel.MemberModel.Id}, {memberEmailModel.EmployeeModel.Id})";
+
+                    int rowsAffected = Global.sqlService.SqlNonQuery(query);
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Member email created successfully");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error adding member email: No rows affected");
+                        return false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error in send member email");
+                    return false;
+                }
+                
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error adding member email in MySql: {ex.Message}");
+                return false;
             }
         }
     }

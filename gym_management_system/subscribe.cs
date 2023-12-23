@@ -52,6 +52,8 @@ namespace gym_management_system
         public subscribe(PackgeModel model, Image image, EmployeeModel employee)
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             pac = true;
             employeeModel = employee;
             this.AutoScaleDimensions = new SizeF(96F, 96F);
@@ -78,6 +80,8 @@ namespace gym_management_system
         public subscribe(MonthOfferModel model, Image image, EmployeeModel employee)
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             mon = true;
             employeeModel = employee;
             this.AutoScaleDimensions = new SizeF(96F, 96F);
@@ -101,6 +105,8 @@ namespace gym_management_system
         public subscribe(ClassModel model, Image image, EmployeeModel employee)
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             cla = true;
             employeeModel = employee;
             this.AutoScaleDimensions = new SizeF(96F, 96F);
@@ -126,6 +132,8 @@ namespace gym_management_system
         public subscribe(TrainerModel model, Image image, EmployeeModel employee)
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             pri = true;
             employeeModel = employee;
             this.AutoScaleDimensions = new SizeF(96F, 96F);
@@ -287,6 +295,7 @@ namespace gym_management_system
                 labelPhone.Text = memberModels[0].PhoneNumber;
                 labelEmail.Text = memberModels[0].Email;
                 labelBrithday.Text = memberModels[0].Brithday.ToString("yyyy/MM/dd");
+                bunifuPictureBox1.Image = Global.mangeImage.ConvertBase64ToImage(memberModels[0].Base64Image);
                 panelloading.Visible = false;
                 panelNoDatamember.Visible = false;
                 panelData.Visible = true;
@@ -458,6 +467,8 @@ namespace gym_management_system
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             PaymentModel model = new PaymentModel();
+            string SubjectOfEmail = null;
+            string Details = null;
             model.Member = memberModels[0];
             model.Employee = employeeModel;
             if (pac)
@@ -465,18 +476,32 @@ namespace gym_management_system
                 supStatus = Global.PackgeSupscribtionService.SubscribePackage(packgeModel, memberModels[0], employeeModel, classesListch);
                 model.Name = "Package Subscribtion in " + packgeModel.Name;
                 model.Amount = disc;
+                SubjectOfEmail = "New Package Subscribtion";
+                string valuesPart = string.Join(", ", classesListch.Select(classModel =>
+                    $"({classModel.Name})"));
+                Details = $"Name: {packgeModel.Name}\n" +
+                          $"Number of Month: {packgeModel.MonthOffer.NumOfMonth}\n" +
+                          $"Max num of Freze: {packgeModel.MonthOffer.MaxNumFreze}\n"+
+                          $"Number of invatation: {packgeModel.NumOfInvatation}\n" +
+                          $"Number of Classes is {packgeModel.NumOfClass}: {valuesPart}\n\n";
             }
             else if (mon)
             {
                 supStatus = Global.monthSubscriptionService.SubscribeMonth(monthOfferModel, memberModels[0], employeeModel);
                 model.Name = "Month Subscribtion in " + monthOfferModel.NumOfMonth + " month";
                 model.Amount = price;
+                SubjectOfEmail = "New Month Subscribtion";
+                Details = $"Number of Month : {monthOfferModel.NumOfMonth}\n" +
+                          $"Max num of Freze: {monthOfferModel.MaxNumFreze}\n";
             }
             else if (cla)
             {
                 supStatus = Global.classSubscriptionService.SubscribeClass(classModel, memberModels[0], employeeModel);
                 model.Name = "Class Subscribtion in " + classModel.Name + " Class";
                 model.Amount = price;
+                SubjectOfEmail = "New Class Subscribtion";
+                Details = $"Name: {classModel.Name}\n" +
+                          $"Trainer Name: {classModel.TrainerModel.Name}\n";
             }
             else if (pri)
             {
@@ -490,6 +515,10 @@ namespace gym_management_system
                     supStatus = Global.PrivateSubscriptionService.SupscribePrivate(num, memberModels[0], employeeModel, trainerModel);
                     model.Name = "Private Subscribtion" + num + " Lesson With " + trainerModel.Name;
                     model.Amount = price;
+                    SubjectOfEmail = "New Private Subscribtion";
+                    Details = $"Trainer Name: {trainerModel.Name}\n" +
+                          $"Trainer specialization: {trainerModel.Specialization}\n" +
+                          $"Number of lessons: {num}\n";
                 }
                 else
                 {
@@ -503,10 +532,18 @@ namespace gym_management_system
 
             if (supStatus)
             {
-
+                MemberEmailModel memberEmailModel = new MemberEmailModel();
+                memberEmailModel.MemberModel = memberModels[0];
+                memberEmailModel.EmployeeModel = employeeModel;
+                memberEmailModel.Subject = SubjectOfEmail;
+                memberEmailModel.SendSubscriptionMessageToMember(model.Name, Details);
                 if (!Global.paymentService.InsertPayment(model))
                 {
                     Console.WriteLine("Error! on Payment insertion " + model.Name);
+                }
+                if (!Global.emailService.AddMemberEmail(memberEmailModel))
+                {
+                    Console.WriteLine("Error! on Send Email " + model.Name);
                 }
             }
             else

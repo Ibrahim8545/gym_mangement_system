@@ -18,6 +18,7 @@ namespace gym_management_system
         private List<Form> form = new List<Form>();
         public EmployeeModel employee;
         private Home home;
+        private Members members;
         public Main_Form()
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace gym_management_system
             f.Dock = DockStyle.Fill;
             this.mainpanel.Controls.Add(f);
             this.mainpanel.Tag = f;
-            f.Show();
+            f.Visible = true;
         }
         public Main_Form(EmployeeModel employeeModel)
         {
@@ -65,6 +66,7 @@ namespace gym_management_system
             if (employee != null)
             {
                 home = new Home(employeeModel);
+                members = new Members();
                 if (employee.Picture != null)
                 {
                     PictureBoxAccountProfile.Image = employee.Picture;
@@ -146,6 +148,7 @@ namespace gym_management_system
                 ButtonHome.Checked = true;
                 return;
             }
+            loadform(home);
             KryptonButtonSetting(ButtonHome);
         }
 
@@ -156,17 +159,8 @@ namespace gym_management_system
                 ButtonMembers.Checked = true;
                 return;
             }
+            loadform(members);
             KryptonButtonSetting(ButtonMembers);
-        }
-
-        private void ButtonAnnouncement_Click(object sender, EventArgs e)
-        {
-            if (!ButtonAnnouncement.Checked)
-            {
-                ButtonAnnouncement.Checked = true;
-                return;
-            }
-            KryptonButtonSetting(ButtonAnnouncement);
         }
 
         private void ButtonEmployees_Click(object sender, EventArgs e)

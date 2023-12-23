@@ -163,3 +163,8 @@ D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.xml
 D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Home.resources
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.xml
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Members.resources
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\bin\Debug\MetroFramework.dll
+D:\Programing\Project\Gym Mangmet System\New folder (2)\gym_mangement_system\gym_management_system\obj\Debug\gym_management_system.Add_Person.resources

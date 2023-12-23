@@ -31,12 +31,12 @@ namespace gym_management_system.Models
         public string SecondName { get { return secondName; } set { secondName = value; } }
         public string Name { get { return (firstName + " " + secondName); } }
         public string Gender { get { return gender; } set { gender = value; } }
+        public int Age { get { try { return CalculateAge(); } catch { Console.WriteLine("Error! to get age"); return 0; } } }
+        public DateTime Brithday { get { return brithday; } set { brithday = value; } }
         public string Email { get { return email; } set { email = value; } }
         public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
-        public DateTime Brithday { get { return brithday; } set { brithday = value; } }
         public Image Picture { get { return picture; } set { picture = value; } }
         public string Base64Image { get { return base64Image; } set { base64Image = value; } }
-        public int Age { get { try { return CalculateAge(); } catch { Console.WriteLine("Error! to get age"); return 0; } } }
         private int CalculateAge()
         {
             DateTime currentDate = DateTime.Now;

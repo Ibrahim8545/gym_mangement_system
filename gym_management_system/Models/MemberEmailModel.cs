@@ -15,7 +15,7 @@ namespace gym_management_system.Models
             MemberModel = memberModel;
         }
 
-        public MemberModel MemberModel { get {  return memberModel; } set {  memberModel = value; } }
+        public MemberModel MemberModel { get {  return memberModel; } set {  memberModel = value; personModel = memberModel; } }
 
         public override PersonModel getreciverData()
         {
@@ -32,7 +32,7 @@ namespace gym_management_system.Models
             }
         }
 
-        public string createEmployeeEmail()
+        public string createMemberEmail()
         {
             body = $"Hi {memberModel.Name}\n\n" +
                 $"Welcome to PulseUp Gym! We are thrilled to have you as a new member of our fitness community. Congratulations on taking the first step towards achieving your health and fitness goals.\n\n" +
@@ -51,15 +51,15 @@ namespace gym_management_system.Models
             return body;
         }
 
-        public string updateMemberInformationEmail(MemberModel updatedMember)
+        public string updateMemberInformationEmail()
         {
-            body = $"Hi {updatedMember.Name}\n\n" +
+            body = $"Hi {memberModel.Name}\n\n" +
                 $"We hope this email finds you well. We wanted to inform you that your member information at PulseUp Gym has been updated successfully. Thank you for keeping your details current!\n\n" +
                 $"Here are the updated details of your member profile:\n\n" +
-                $"ID: {updatedMember.Id}\n" +
-                $"Name: {updatedMember.Name}\n" +
-                $"Email: {updatedMember.Email}\n" +
-                $"Phone: {updatedMember.PhoneNumber}\n\n" +
+                $"ID: {memberModel.Id}\n" +
+                $"Name: {memberModel.Name}\n" +
+                $"Email: {memberModel.Email}\n" +
+                $"Phone: {memberModel.PhoneNumber}\n\n" +
                 $"Contact Information:\n" +
                 $"Phone: 01xxxxxxxxxx\n" +
                 $"Email: pulseupgym@gmail.com\n\n" +
@@ -86,6 +86,28 @@ namespace gym_management_system.Models
                 $"Thank you for being a part of the PulseUp Gym community. We appreciate your commitment to your health and fitness goals!\n\n" +
                 $"Best regards," +
                 $"PulseUp Gym";
+            return body;
+        }
+
+        public string SendSubscriptionMessageToMember(string newSubscription, string Details)
+        {
+             body = $"Hi {memberModel.Name},\n\n" +
+                $"We're excited to share some great news with you regarding our gym services. {newSubscription}\n\n" +
+                $"Details:\n"+
+                $"{Details}"+
+                $"As a valued member of PulseUp Gym, here are the details of your member profile:\n\n" +
+                $"ID: {memberModel.Id}\n" +
+                $"Name: {memberModel.Name}\n" +
+                $"Email: {memberModel.Email}\n" +
+                $"Phone: {memberModel.PhoneNumber}\n\n" +
+                $"Contact Information:\n" +
+                $"Phone: 01xxxxxxxxxx\n" +
+                $"Email: pulseupgym@gmail.com\n\n" +
+                $"Whether you have questions about this new subscription feature, need assistance with your fitness routine, or have any other inquiries, our team is here to help. Feel free to reach out to us at any time.\n" +
+                $"Thank you for being a part of the PulseUp Gym community. We appreciate your commitment to your health and fitness goals!\n\n" +
+                $"Best regards,\n" +
+                $"PulseUp Gym";
+
             return body;
         }
 
