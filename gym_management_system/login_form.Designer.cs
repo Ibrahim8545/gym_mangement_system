@@ -209,7 +209,7 @@
             this.btnLogin.ButtonTextMarginLeft = 0;
             this.btnLogin.ColorContrastOnClick = 45;
             this.btnLogin.ColorContrastOnHover = 45;
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;

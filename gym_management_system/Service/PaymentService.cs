@@ -15,54 +15,19 @@ namespace gym_management_system.Service
             try
             {
                 List<PaymentModel> payments = new List<PaymentModel>();
-                string query = $@"
-            SELECT 
-                p.id AS payment_id,
-                p.name,
-                p.amount,
-                p.date,
-                m.id AS member_id,
-                m.first_name AS member_first_name,
-                m.second_name AS member_second_name,
-                e.id AS employee_id,
-                e.first_name AS employee_first_name,
-                e.second_name AS employee_second_name
-            FROM 
-                payments p";
-
-                if (includeMemberData)
-                {
-                    query += " LEFT JOIN member m ON p.memberID = m.id";
-                }
-
-                if (includeEmployeeData)
-                {
-                    query += " LEFT JOIN employee e ON p.employeeID = e.id";
-                }
-
+                string query = $"SELECT * FROM payments";
                 MySqlDataReader reader = Global.sqlService.SqlSelect(query);
-
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         PaymentModel payment = new PaymentModel(
-                            id: Convert.ToInt32(reader["payment_id"]),
+                            id: Convert.ToInt32(reader["id"]),
                             name: reader["name"].ToString(),
                             amount: Convert.ToInt32(reader["amount"]),
                             date: Convert.ToDateTime(reader["date"]),
-                            member: includeMemberData ? new MemberModel
-                            {
-                                Id = Convert.ToInt32(reader["member_id"]),
-                                FirstName = reader["member_first_name"].ToString(),
-                                SecondName = reader["member_second_name"].ToString()
-                            } : null,
-                            employee: includeEmployeeData ? new EmployeeModel
-                            {
-                                Id = Convert.ToInt32(reader["employee_id"]),
-                                FirstName = reader["employee_first_name"].ToString(),
-                                SecondName = reader["employee_second_name"].ToString()
-                            } : null
+                            member: includeMemberData ? new MemberModel(id: Convert.ToInt32(reader["memberID"])) : null,
+                            employee: includeEmployeeData ? new EmployeeModel(id: Convert.ToInt32(reader["employeeID"])) : null
                         );
 
                         payments.Add(payment);
@@ -86,10 +51,9 @@ namespace gym_management_system.Service
         {
             try
             {
-                string query = $"INSERT INTO payments (name, amount, date, memberID, employeeID) VALUES " +
-                               $"('{payment.Name}', {payment.Amount}, '{payment.Date:yyyy-MM-dd HH:mm:ss}', " +
-                               $"{(payment.Member != null ? payment.Member.Id.ToString() : "NULL")}, " +
-                               $"{(payment.Employee != null ? payment.Employee.Id.ToString() : "NULL")})";
+                string query = $"INSERT INTO payment (name, amount, date, memberID, employeeID) VALUES " +
+                               $"('{payment.Name}', {payment.Amount}, now(), " +
+                               $"{payment.Member.Id}, {payment.Employee.Id})";
 
 
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);

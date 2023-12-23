@@ -186,6 +186,7 @@
     <Compile Include="Service\PackgeService.cs" />
     <Compile Include="Service\PackgeSupscribtionService.cs" />
     <Compile Include="Service\PaymentService.cs" />
+    <Compile Include="Service\PrivateSubscriptionService.cs" />
     <Compile Include="Service\SqlService.cs" />
     <Compile Include="Service\TrainerService.cs" />
     <Compile Include="subscribe.cs">

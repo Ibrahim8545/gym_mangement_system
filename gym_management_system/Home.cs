@@ -42,10 +42,10 @@ namespace gym_management_system
             backgroundWorkerMonth.RunWorkerAsync();
             backgroundWorkerClsss.RunWorkerAsync();
             backgroundWorkertrainer.RunWorkerAsync();
-            images.Add(Image.FromFile("system_image\\pkg1_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg2_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg3_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg4_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg1.png"));
+            images.Add(Image.FromFile("system_image\\pkg2.png"));
+            images.Add(Image.FromFile("system_image\\pkg3.png"));
+            images.Add(Image.FromFile("system_image\\pkg4.png"));
         }
 
         public Home(EmployeeModel employeeModel)
@@ -57,10 +57,14 @@ namespace gym_management_system
             backgroundWorkerMonth.RunWorkerAsync();
             backgroundWorkerClsss.RunWorkerAsync();
             backgroundWorkertrainer.RunWorkerAsync();
-            images.Add(Image.FromFile("system_image\\pkg1_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg2_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg3_light.png"));
-            images.Add(Image.FromFile("system_image\\pkg4_light.png"));
+            images.Add(Image.FromFile("system_image\\pkg1.png"));
+            images.Add(Image.FromFile("system_image\\pkg2.png"));
+            images.Add(Image.FromFile("system_image\\pkg3.png"));
+            images.Add(Image.FromFile("system_image\\pkg4.png"));
+            images[0].Tag = "system_image\\pkg1_light.png";
+            images[1].Tag = "system_image\\pkg2_light.png";
+            images[2].Tag = "system_image\\pkg3_light.png";
+            images[3].Tag = "system_image\\pkg4_light.png";
             this.employeeModel = employeeModel;
         }
         public void resize_shedual_min()
@@ -101,6 +105,7 @@ namespace gym_management_system
             panel.ForeColor = Color.White;
             panel.BackColor = Color.Transparent;
             panel.BackgroundImage = image;
+            panel.BackgroundImage.Tag = image.Tag;
             panel.BackgroundImageLayout = ImageLayout.Stretch;
             Font labelFontNP = new Font(new FontFamily("Gilroy-SemiBold"), 34, FontStyle.Bold, GraphicsUnit.Pixel);
             Font labelFont = new Font(new FontFamily("Gilroy-SemiBold"), 12, FontStyle.Bold, GraphicsUnit.Point);
@@ -170,6 +175,7 @@ namespace gym_management_system
             panel.ForeColor = Color.White;
             panel.BackColor = Color.Transparent;
             panel.BackgroundImage = image;
+            panel.BackgroundImage.Tag = image.Tag;
             panel.BackgroundImageLayout = ImageLayout.Stretch;
             lName.Font = labelFontNP;
             lName.Text = monthOfferModel.NumOfMonth + " Month";
@@ -182,7 +188,7 @@ namespace gym_management_system
             LFD.Size = new Size(280, 29);
             LFD.Tag = monthOfferModel;
             LPD.Font = labelFont;
-            LPD.Text = monthOfferModel.Price + "$";
+            LPD.Text = monthOfferModel.Price + "EGP";
             LPD.Location = new System.Drawing.Point(8, 131);
             LPD.Size = new Size(280, 29);
             LPD.Tag = monthOfferModel;
@@ -226,6 +232,7 @@ namespace gym_management_system
             panel.ForeColor = Color.White;
             panel.BackColor = Color.Transparent;
             panel.BackgroundImage = image;
+            panel.BackgroundImage.Tag = image.Tag;
             panel.BackgroundImageLayout = ImageLayout.Stretch;
             lName.Font = labelFontNP;
             lName.Text = classModel.Name;
@@ -248,7 +255,7 @@ namespace gym_management_system
             LTN.Size = new Size(280, 29);
             LTN.Tag = classModel;
             LP.Font = labelFont;
-            LP.Text = classModel.Price + "$";
+            LP.Text = classModel.Price + "EGP";
             LP.Location = new System.Drawing.Point(8, 169);
             LP.Size = new Size(280, 29);
             LP.Tag = classModel;
@@ -293,6 +300,7 @@ namespace gym_management_system
             lName.Text = trainerModel.Name;
             panel.BackgroundImageLayout = ImageLayout.Stretch;
             panel.BackgroundImage = image;
+            panel.BackgroundImage.Tag = image.Tag;
             lName.Location = new System.Drawing.Point(2, 68);
             lName.Size = new Size(293, 49);
             lName.Tag = trainerModel;
@@ -302,7 +310,7 @@ namespace gym_management_system
             LSD.Size = new Size(280, 29);
             LSD.Tag = trainerModel;
             LPD.Font = labelFont;
-            LPD.Text = trainerModel.PrivateLessonPrice + "$";
+            LPD.Text = trainerModel.PrivateLessonPrice + "EGP";
             LPD.Location = new System.Drawing.Point(8, 146);
             LPD.Size = new Size(280, 29);
             LPD.Tag = trainerModel;
@@ -323,13 +331,13 @@ namespace gym_management_system
             {
                 if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is PackgeModel packgeModel))
                 {
-                    subscribe subscribe = new subscribe(packgeModel, panel.BackgroundImage, employeeModel);
+                    subscribe subscribe = new subscribe(packgeModel, Image.FromFile(panel.BackgroundImage.Tag.ToString()), employeeModel);
                     subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is PackgeModel packgeModel1)
                 {
-                    subscribe subscribe = new subscribe(packgeModel1, control.BackgroundImage, employeeModel);
+                    subscribe subscribe = new subscribe(packgeModel1, Image.FromFile(control.BackgroundImage.Tag.ToString()), employeeModel);
                     subscribe.ShowDialog();
                 }
             }
@@ -341,13 +349,13 @@ namespace gym_management_system
             {
                 if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is MonthOfferModel monthOfferModel))
                 {
-                    subscribe subscribe = new subscribe(monthOfferModel, panel.BackgroundImage, employeeModel);
+                    subscribe subscribe = new subscribe(monthOfferModel, Image.FromFile(panel.BackgroundImage.Tag.ToString()), employeeModel);
                     subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is MonthOfferModel monthOfferModel1)
                 {
-                    subscribe subscribe = new subscribe(monthOfferModel1, control.BackgroundImage, employeeModel);
+                    subscribe subscribe = new subscribe(monthOfferModel1, Image.FromFile(control.BackgroundImage.Tag.ToString()), employeeModel);
                     subscribe.ShowDialog();
                 }
             }
@@ -357,14 +365,16 @@ namespace gym_management_system
         {
             if (sender is Control control)
             {
-                if ((control.Parent is Bunifu.UI.WinForms.BunifuGradientPanel panel && panel.Tag is ClassModel classModel))
+                if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is ClassModel classModel))
                 {
-                    MessageBox.Show($"Clicked on {classModel.Price}");
+                    subscribe subscribe = new subscribe(classModel, Image.FromFile(panel.BackgroundImage.Tag.ToString()), employeeModel);
+                    subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is ClassModel classModel1)
                 {
-                    MessageBox.Show($"Clicked on {classModel1.Price}");
+                    subscribe subscribe = new subscribe(classModel1, Image.FromFile(control.BackgroundImage.Tag.ToString()), employeeModel);
+                    subscribe.ShowDialog();
                 }
             }
         }
@@ -373,14 +383,16 @@ namespace gym_management_system
         {
             if (sender is Control control)
             {
-                if ((control.Parent is Bunifu.UI.WinForms.BunifuGradientPanel panel && panel.Tag is TrainerModel trainerModel))
+                if ((control.Parent is DoubleBufferedPanel panel && panel.Tag is TrainerModel trainerModel))
                 {
-                    MessageBox.Show($"Clicked on {trainerModel.Name}");
+                    subscribe subscribe = new subscribe(trainerModel, Image.FromFile(panel.BackgroundImage.Tag.ToString()), employeeModel);
+                    subscribe.ShowDialog();
                     return;
                 }
                 if (control.Tag is TrainerModel trainerModel1)
                 {
-                    MessageBox.Show($"Clicked on {trainerModel1.Name}");
+                    subscribe subscribe = new subscribe(trainerModel1, Image.FromFile(control.BackgroundImage.Tag.ToString()), employeeModel);
+                    subscribe.ShowDialog();
                 }
             }
         }

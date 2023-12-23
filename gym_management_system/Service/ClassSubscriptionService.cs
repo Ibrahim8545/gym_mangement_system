@@ -88,6 +88,60 @@ namespace gym_management_system.Service
                 return null;
             }
         }
+
+        public bool SubscribeClass(ClassModel classModel, MemberModel memberModel, EmployeeModel employeeModel)
+        {
+            try
+            {
+                string query = $@"INSERT INTO class_subscription 
+                (start_date, num_of_attend, memberID, employeeID, classID) VALUES 
+                (NOW(), 0, {memberModel.Id}, 
+                {employeeModel.Id}, {classModel.Id})";
+
+                int rowsAffected = Global.sqlService.SqlNonQuery(query);
+
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine("Class Subscription created successfully");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error adding class subscription: No rows affected");
+                    return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error adding class subscription in MySql: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool CheckMemberInClassSubscription(int memberId, int classId)
+        {
+            try
+            {
+                string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                string query = $@"
+                SELECT COUNT(*) 
+                FROM class_subscription cs
+                INNER JOIN class c ON cs.classID = c.id
+                WHERE cs.memberID = {memberId}
+                AND cs.classID = {classId}
+                AND cs.start_date <= NOW()
+                AND DATE_ADD(cs.start_date, INTERVAL 1 Month) >= NOW()";
+
+                int count = Global.sqlService.sqlExecuteScalar(query);
+                return count > 0;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error checking member class subscription in MySql: {ex.Message}");
+                return false;
+            }
+        }
+
         public bool UpdateClassAttributes(ClassSubscriptionModel classModel, bool numOfAttend = false, bool startDate = false, bool endDate = false)
         {
             try

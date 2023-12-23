@@ -19,6 +19,8 @@ namespace gym_management_system
     {
         private PackgeModel packgeModel;
         private MonthOfferModel monthOfferModel;
+        private TrainerModel trainerModel;
+        private ClassModel classModel;
         private List<ClassModel> classes;
         private List<ClassModel> classesListch = new List<ClassModel>();
         private List<MemberModel> memberModels;
@@ -96,6 +98,54 @@ namespace gym_management_system
             panelMonthSubscription.Visible = true;
         }
 
+        public subscribe(ClassModel model, Image image, EmployeeModel employee)
+        {
+            InitializeComponent();
+            cla = true;
+            employeeModel = employee;
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            btnCan.Focus();
+            labelSub.Text = "Class Subscribtion";
+            panelData.Visible = false;
+            labelSub.Focus();
+            classModel = model;
+            price = classModel.Price;
+            panelClass.BackgroundImage = image;
+            panelClass.BackgroundImageLayout = ImageLayout.Stretch;
+            labelclassname.Text = classModel.Name;
+            labelclassDay1.Text = classModel.SessionOneDayName;
+            labelclassDay2.Text = classModel.SessionTwoDayName;
+            labelclassTrainer.Text = classModel.TrainerModel.Name;
+            labelclassPrice.Text = classModel.Price + "EGP";
+            labelprice.Text = price + "EGP";
+            btnSub.Enabled = false;
+            panelClassSup.Visible = true;
+        }
+
+        public subscribe(TrainerModel model, Image image, EmployeeModel employee)
+        {
+            InitializeComponent();
+            pri = true;
+            employeeModel = employee;
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            btnCan.Focus();
+            labelSub.Text = "Class Subscribtion";
+            panelData.Visible = false;
+            labelSub.Focus();
+            trainerModel = model;
+            price = trainerModel.PrivateLessonPrice;
+            panelPriv.BackgroundImage = image;
+            panelPriv.BackgroundImageLayout = ImageLayout.Stretch;
+            labelPrivateSpetialize.Text = trainerModel.Specialization;
+            labelPrivatPrice.Text = trainerModel.PrivateLessonPrice + "EGP";
+            labelprice.Text = price + "EGP";
+            btnSub.Enabled = false;
+            panelPrivSup.Visible = true;
+            textNumlesson.KeyPress += textNumlesson_KeyPress;
+        }
+
         private void customCheckboxclasses(int x, int y, ClassModel classModel, Panel p)
         {
             CheckBox checkBox = new CheckBox();
@@ -108,6 +158,19 @@ namespace gym_management_system
             checkBox.Tag = classModel;
             p.Controls.Add(checkBox);
             checkBox.CheckedChanged += new EventHandler(checkBox_Checked);
+        }
+
+        private void textNumlesson_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            int characterLimit = 1;
+            if (textNumlesson.Text.Length >= characterLimit && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void checkBox_Checked(object sender, System.EventArgs e)
@@ -199,6 +262,13 @@ namespace gym_management_system
                         {
                             can_sub = Global.monthSubscriptionService.CheckMemberInMonthSubscription(memberModels[0].Id);
                         }
+                        else if (cla)
+                        {
+                            can_sub = Global.classSubscriptionService.CheckMemberInClassSubscription(memberModels[0].Id,classModel.Id);
+                        }else if (pri)
+                        {
+                            can_sub = Global.PrivateSubscriptionService.CheckMemberPrivateSubscription(memberModels[0].Id);
+                        }
                     }   
                 }
                 else
@@ -230,6 +300,10 @@ namespace gym_management_system
                 {
                     labelCanSup.Text = "Can Subscripe";
                     labelCanSup.ForeColor = Color.FromArgb(80, 200, 120);
+                    if (!pac)
+                    {
+                        btnSub.Enabled = true;
+                    }
                 }
                 if (pac)
                 {
@@ -298,6 +372,34 @@ namespace gym_management_system
             
         }
 
+        private void textNumlesson_Enter(object sender, EventArgs e)
+        {
+            if (textNumlesson.Text == "Lesson Number")
+            {
+                labelErrorLesson.Text = string.Empty;
+                if (textNumlesson.Text == "Lesson Number")
+                {
+                    textNumlesson.Text = string.Empty;
+                    textNumlesson.StateActive.Content.Color1 = Color.FromArgb(189, 188, 205);
+                    if (textNumlesson.TabStop == false)
+                    {
+                        textNumlesson.TabStop = true;
+                    }
+                }
+            }
+            labelsubError.Text = string.Empty;
+        }
+
+        private void textNumlesson_Leave(object sender, EventArgs e)
+        {
+            if (textNumlesson.Text == "")
+            {
+                textNumlesson.Text = "Lesson Number";
+                textNumlesson.StateActive.Content.Color1 = Color.FromArgb(255, 115, 115);
+                labelErrorLesson.Text = "Lesson Number Required!";
+            }
+        }
+
         private void textSearch_Enter(object sender, EventArgs e)
         {
             if(textSearch.Text == "Search")
@@ -332,8 +434,19 @@ namespace gym_management_system
             if (supStatus)
             {
                 labelsubError.Visible = false;
-                labelSub.Text = "Can`t Subscripe";
+                labelCanSup.Text = "Can`t Subscripe";
                 labelCanSup.ForeColor = Color.FromArgb(255, 87, 51);
+                btnSub.Enabled = false;
+                if (pac)
+                {
+                    foreach (CheckBox checkBox1 in panelclassesDataP.Controls.OfType<CheckBox>())
+                    {
+                        if (checkBox1.Checked)
+                        {
+                            checkBox1.Enabled = false;
+                        }
+                    }
+                }
             }
             else
             {
@@ -344,21 +457,62 @@ namespace gym_management_system
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
+            PaymentModel model = new PaymentModel();
+            model.Member = memberModels[0];
+            model.Employee = employeeModel;
             if (pac)
             {
                 supStatus = Global.PackgeSupscribtionService.SubscribePackage(packgeModel, memberModels[0], employeeModel, classesListch);
+                model.Name = "Package Subscribtion in " + packgeModel.Name;
+                model.Amount = disc;
             }
-            else if(mon)
+            else if (mon)
             {
-
-            }else if(cla)
-            {
-
-            }else if(pri)
-            {
-
+                supStatus = Global.monthSubscriptionService.SubscribeMonth(monthOfferModel, memberModels[0], employeeModel);
+                model.Name = "Month Subscribtion in " + monthOfferModel.NumOfMonth + " month";
+                model.Amount = price;
             }
-            
+            else if (cla)
+            {
+                supStatus = Global.classSubscriptionService.SubscribeClass(classModel, memberModels[0], employeeModel);
+                model.Name = "Class Subscribtion in " + classModel.Name + " Class";
+                model.Amount = price;
+            }
+            else if (pri)
+            {
+                if (int.TryParse(textNumlesson.Text, out int num) || textNumlesson.Text == "")
+                {
+                    labelsubError.Invoke((MethodInvoker)delegate
+                    {
+                        labelsubError.Visible = false;
+                    });
+
+                    supStatus = Global.PrivateSubscriptionService.SupscribePrivate(num, memberModels[0], employeeModel, trainerModel);
+                    model.Name = "Private Subscribtion" + num + " Lesson With " + trainerModel.Name;
+                    model.Amount = price;
+                }
+                else
+                {
+                    labelsubError.Invoke((MethodInvoker)delegate
+                    {
+                        labelsubError.Visible = true;
+                        labelsubError.Text = "Error on Subscription";
+                    });
+                }
+            }
+
+            if (supStatus)
+            {
+
+                if (!Global.paymentService.InsertPayment(model))
+                {
+                    Console.WriteLine("Error! on Payment insertion " + model.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error! on Subscribtion");
+            }
         }
     }
 }

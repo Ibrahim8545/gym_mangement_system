@@ -219,13 +219,41 @@ namespace gym_management_system.Service
             }
         }
 
+        public bool SubscribeMonth(MonthOfferModel monthOfferModel, MemberModel memberModel, EmployeeModel employeeModel)
+        {
+            try
+            {
+                string query = $@"INSERT INTO month_subscription 
+                                (num_of_attend, start_date, remain_freze_day, memberID, employeeID, monthID) VALUES 
+                                (0, now(), (SELECT max_num_freze FROM month_offer WHERE id = {monthOfferModel.Id}), {memberModel.Id}, {employeeModel.Id}, {monthOfferModel.Id})";
+
+                int rowsAffected = Global.sqlService.SqlNonQuery(query);
+
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine("Month Subscription created successfully");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error adding month subscription: No rows affected");
+                    return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error adding month subscription in MySql: {ex.Message}");
+                return false;
+            }
+        }
+
         public bool AddMonthSubscription(MonthSubscriptionModel subscription)
         {
             try
             {
                 string query = $@"INSERT INTO month_subscription 
                                 (num_of_attend, start_date, remain_freze_day, memberID, employeeID, monthID) VALUES 
-                                ({subscription.NumberOfAttend}, '{subscription.StartDate.ToString("yyyy-MM-dd")}', {subscription.RemainFrezeDay}, {subscription.Member.Id}, {subscription.Employee.Id}, {subscription.MonthOffer.Id})";
+                                ({subscription.NumberOfAttend}, 'now()', {subscription.RemainFrezeDay}, {subscription.Member.Id}, {subscription.Employee.Id}, {subscription.MonthOffer.Id})";
 
                 int rowsAffected = Global.sqlService.SqlNonQuery(query);
 

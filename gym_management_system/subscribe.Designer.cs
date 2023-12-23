@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subscribe));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelmemberinfo = new System.Windows.Forms.Panel();
             this.panelloading = new System.Windows.Forms.Panel();
@@ -84,6 +84,23 @@
             this.labelfrezeNum = new System.Windows.Forms.Label();
             this.labelmonthprice = new System.Windows.Forms.Label();
             this.bunifuElipse5 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.panelClassSup = new System.Windows.Forms.Panel();
+            this.panelPrivSup = new System.Windows.Forms.Panel();
+            this.textNumlesson = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.panelPriv = new System.Windows.Forms.Panel();
+            this.labelprivatTrainerName = new System.Windows.Forms.Label();
+            this.labelPrivateSpetialize = new System.Windows.Forms.Label();
+            this.labelPrivatPrice = new System.Windows.Forms.Label();
+            this.panelClass = new System.Windows.Forms.Panel();
+            this.labelclassPrice = new System.Windows.Forms.Label();
+            this.labelclassTrainer = new System.Windows.Forms.Label();
+            this.labelclassname = new System.Windows.Forms.Label();
+            this.labelclassDay1 = new System.Windows.Forms.Label();
+            this.labelclassDay2 = new System.Windows.Forms.Label();
+            this.bunifuElipse6 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse7 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse8 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.labelErrorLesson = new System.Windows.Forms.Label();
             this.panelmemberinfo.SuspendLayout();
             this.panelloading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,6 +115,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.panelMonthSubscription.SuspendLayout();
             this.panelMonth.SuspendLayout();
+            this.panelClassSup.SuspendLayout();
+            this.panelPrivSup.SuspendLayout();
+            this.panelPriv.SuspendLayout();
+            this.panelClass.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -357,7 +378,7 @@
             // 
             this.panelPackgeSub.Controls.Add(this.panelpackge);
             this.panelPackgeSub.Controls.Add(this.panel1);
-            this.panelPackgeSub.Location = new System.Drawing.Point(503, 727);
+            this.panelPackgeSub.Location = new System.Drawing.Point(52, 681);
             this.panelPackgeSub.Name = "panelPackgeSub";
             this.panelPackgeSub.Size = new System.Drawing.Size(1059, 293);
             this.panelPackgeSub.TabIndex = 38;
@@ -486,6 +507,7 @@
             // panelclassesDataP
             // 
             this.panelclassesDataP.AutoScroll = true;
+            this.panelclassesDataP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.panelclassesDataP.Location = new System.Drawing.Point(51, 13);
             this.panelclassesDataP.Name = "panelclassesDataP";
             this.panelclassesDataP.Size = new System.Drawing.Size(426, 240);
@@ -532,11 +554,11 @@
             this.btnCan.ColorContrastOnClick = 45;
             this.btnCan.ColorContrastOnHover = 45;
             this.btnCan.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges11.BottomLeft = true;
-            borderEdges11.BottomRight = true;
-            borderEdges11.TopLeft = true;
-            borderEdges11.TopRight = true;
-            this.btnCan.CustomizableEdges = borderEdges11;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnCan.CustomizableEdges = borderEdges1;
             this.btnCan.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCan.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
             this.btnCan.DisabledFillColor = System.Drawing.Color.Transparent;
@@ -560,7 +582,7 @@
             this.btnCan.IdleIconLeftImage = null;
             this.btnCan.IdleIconRightImage = null;
             this.btnCan.IndicateFocus = false;
-            this.btnCan.Location = new System.Drawing.Point(268, 631);
+            this.btnCan.Location = new System.Drawing.Point(1382, 680);
             this.btnCan.Name = "btnCan";
             this.btnCan.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
             this.btnCan.OnDisabledState.BorderRadius = 30;
@@ -622,15 +644,15 @@
             this.btnSub.ColorContrastOnClick = 45;
             this.btnSub.ColorContrastOnHover = 45;
             this.btnSub.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges12.BottomLeft = true;
-            borderEdges12.BottomRight = true;
-            borderEdges12.TopLeft = true;
-            borderEdges12.TopRight = true;
-            this.btnSub.CustomizableEdges = borderEdges12;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnSub.CustomizableEdges = borderEdges2;
             this.btnSub.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSub.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btnSub.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
-            this.btnSub.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
+            this.btnSub.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(194)))), ((int)(((byte)(255)))));
             this.btnSub.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Idle;
             this.btnSub.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
@@ -650,14 +672,14 @@
             this.btnSub.IdleIconLeftImage = null;
             this.btnSub.IdleIconRightImage = null;
             this.btnSub.IndicateFocus = false;
-            this.btnSub.Location = new System.Drawing.Point(29, 631);
+            this.btnSub.Location = new System.Drawing.Point(1143, 680);
             this.btnSub.Name = "btnSub";
             this.btnSub.OnDisabledState.BorderColor = System.Drawing.Color.Transparent;
             this.btnSub.OnDisabledState.BorderRadius = 30;
             this.btnSub.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.btnSub.OnDisabledState.BorderThickness = 1;
             this.btnSub.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
-            this.btnSub.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
+            this.btnSub.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(194)))), ((int)(((byte)(255)))));
             this.btnSub.OnDisabledState.IconLeftImage = null;
             this.btnSub.OnDisabledState.IconRightImage = null;
             this.btnSub.onHoverState.BorderColor = System.Drawing.Color.Empty;
@@ -755,7 +777,7 @@
             this.labelsubError.BackColor = System.Drawing.Color.Transparent;
             this.labelsubError.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelsubError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
-            this.labelsubError.Location = new System.Drawing.Point(47, 727);
+            this.labelsubError.Location = new System.Drawing.Point(1153, 775);
             this.labelsubError.Name = "labelsubError";
             this.labelsubError.Size = new System.Drawing.Size(0, 27);
             this.labelsubError.TabIndex = 44;
@@ -765,7 +787,7 @@
             this.labelprice.AutoSize = true;
             this.labelprice.Font = new System.Drawing.Font("Gilroy-SemiBold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelprice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(205)))));
-            this.labelprice.Location = new System.Drawing.Point(170, 775);
+            this.labelprice.Location = new System.Drawing.Point(1284, 813);
             this.labelprice.Name = "labelprice";
             this.labelprice.Size = new System.Drawing.Size(69, 49);
             this.labelprice.TabIndex = 21;
@@ -777,7 +799,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Gilroy-SemiBold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(73)))));
-            this.label6.Location = new System.Drawing.Point(43, 775);
+            this.label6.Location = new System.Drawing.Point(1157, 813);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 49);
             this.label6.TabIndex = 20;
@@ -786,7 +808,7 @@
             // panelMonthSubscription
             // 
             this.panelMonthSubscription.Controls.Add(this.panelMonth);
-            this.panelMonthSubscription.Location = new System.Drawing.Point(793, 713);
+            this.panelMonthSubscription.Location = new System.Drawing.Point(38, 683);
             this.panelMonthSubscription.Name = "panelMonthSubscription";
             this.panelMonthSubscription.Size = new System.Drawing.Size(526, 296);
             this.panelMonthSubscription.TabIndex = 45;
@@ -844,12 +866,212 @@
             this.bunifuElipse5.ElipseRadius = 50;
             this.bunifuElipse5.TargetControl = this.panelMonth;
             // 
+            // panelClassSup
+            // 
+            this.panelClassSup.Controls.Add(this.panelClass);
+            this.panelClassSup.Location = new System.Drawing.Point(43, 686);
+            this.panelClassSup.Name = "panelClassSup";
+            this.panelClassSup.Size = new System.Drawing.Size(548, 291);
+            this.panelClassSup.TabIndex = 46;
+            this.panelClassSup.Visible = false;
+            // 
+            // panelPrivSup
+            // 
+            this.panelPrivSup.Controls.Add(this.textNumlesson);
+            this.panelPrivSup.Controls.Add(this.panelPriv);
+            this.panelPrivSup.Location = new System.Drawing.Point(46, 684);
+            this.panelPrivSup.Name = "panelPrivSup";
+            this.panelPrivSup.Size = new System.Drawing.Size(877, 291);
+            this.panelPrivSup.TabIndex = 47;
+            this.panelPrivSup.Visible = false;
+            // 
+            // textNumlesson
+            // 
+            this.textNumlesson.Location = new System.Drawing.Point(532, 122);
+            this.textNumlesson.Name = "textNumlesson";
+            this.textNumlesson.Size = new System.Drawing.Size(336, 70);
+            this.textNumlesson.StateActive.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
+            this.textNumlesson.StateActive.Border.Color1 = System.Drawing.Color.Transparent;
+            this.textNumlesson.StateActive.Border.Color2 = System.Drawing.Color.Transparent;
+            this.textNumlesson.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.textNumlesson.StateActive.Border.Width = -2;
+            this.textNumlesson.StateActive.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(78)))));
+            this.textNumlesson.StateActive.Content.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNumlesson.StateActive.Content.Padding = new System.Windows.Forms.Padding(15, 12, -1, 13);
+            this.textNumlesson.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
+            this.textNumlesson.StateDisabled.Border.Color1 = System.Drawing.Color.Transparent;
+            this.textNumlesson.StateDisabled.Border.Color2 = System.Drawing.Color.Transparent;
+            this.textNumlesson.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.textNumlesson.StateDisabled.Border.Width = -2;
+            this.textNumlesson.StateDisabled.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(71)))), ((int)(((byte)(78)))));
+            this.textNumlesson.StateDisabled.Content.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F);
+            this.textNumlesson.StateDisabled.Content.Padding = new System.Windows.Forms.Padding(15, 12, -1, 13);
+            this.textNumlesson.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(36)))));
+            this.textNumlesson.StateNormal.Content.Padding = new System.Windows.Forms.Padding(15, 12, -1, 13);
+            this.textNumlesson.TabIndex = 33;
+            this.textNumlesson.Text = "Lesson Number";
+            this.textNumlesson.Enter += new System.EventHandler(this.textNumlesson_Enter);
+            this.textNumlesson.Leave += new System.EventHandler(this.textNumlesson_Leave);
+            // 
+            // panelPriv
+            // 
+            this.panelPriv.Controls.Add(this.labelprivatTrainerName);
+            this.panelPriv.Controls.Add(this.labelPrivateSpetialize);
+            this.panelPriv.Controls.Add(this.labelPrivatPrice);
+            this.panelPriv.Location = new System.Drawing.Point(41, 20);
+            this.panelPriv.Name = "panelPriv";
+            this.panelPriv.Size = new System.Drawing.Size(460, 253);
+            this.panelPriv.TabIndex = 32;
+            // 
+            // labelprivatTrainerName
+            // 
+            this.labelprivatTrainerName.AutoSize = true;
+            this.labelprivatTrainerName.BackColor = System.Drawing.Color.Transparent;
+            this.labelprivatTrainerName.Font = new System.Drawing.Font("Gilroy-SemiBold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelprivatTrainerName.ForeColor = System.Drawing.Color.White;
+            this.labelprivatTrainerName.Location = new System.Drawing.Point(0, 87);
+            this.labelprivatTrainerName.Name = "labelprivatTrainerName";
+            this.labelprivatTrainerName.Size = new System.Drawing.Size(364, 59);
+            this.labelprivatTrainerName.TabIndex = 0;
+            this.labelprivatTrainerName.Text = "Adham Elagaty";
+            this.labelprivatTrainerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelPrivateSpetialize
+            // 
+            this.labelPrivateSpetialize.AutoSize = true;
+            this.labelPrivateSpetialize.BackColor = System.Drawing.Color.Transparent;
+            this.labelPrivateSpetialize.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrivateSpetialize.ForeColor = System.Drawing.Color.White;
+            this.labelPrivateSpetialize.Location = new System.Drawing.Point(12, 146);
+            this.labelPrivateSpetialize.Name = "labelPrivateSpetialize";
+            this.labelPrivateSpetialize.Size = new System.Drawing.Size(133, 44);
+            this.labelPrivateSpetialize.TabIndex = 1;
+            this.labelPrivateSpetialize.Text = "Boxing";
+            // 
+            // labelPrivatPrice
+            // 
+            this.labelPrivatPrice.AutoSize = true;
+            this.labelPrivatPrice.BackColor = System.Drawing.Color.Transparent;
+            this.labelPrivatPrice.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrivatPrice.ForeColor = System.Drawing.Color.White;
+            this.labelPrivatPrice.Location = new System.Drawing.Point(14, 182);
+            this.labelPrivatPrice.Name = "labelPrivatPrice";
+            this.labelPrivatPrice.Size = new System.Drawing.Size(143, 44);
+            this.labelPrivatPrice.TabIndex = 2;
+            this.labelPrivatPrice.Text = "150EGP";
+            // 
+            // panelClass
+            // 
+            this.panelClass.Controls.Add(this.labelclassPrice);
+            this.panelClass.Controls.Add(this.labelclassTrainer);
+            this.panelClass.Controls.Add(this.labelclassname);
+            this.panelClass.Controls.Add(this.labelclassDay1);
+            this.panelClass.Controls.Add(this.labelclassDay2);
+            this.panelClass.Location = new System.Drawing.Point(41, 26);
+            this.panelClass.Name = "panelClass";
+            this.panelClass.Size = new System.Drawing.Size(460, 253);
+            this.panelClass.TabIndex = 32;
+            // 
+            // labelclassPrice
+            // 
+            this.labelclassPrice.AutoSize = true;
+            this.labelclassPrice.BackColor = System.Drawing.Color.Transparent;
+            this.labelclassPrice.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelclassPrice.ForeColor = System.Drawing.Color.White;
+            this.labelclassPrice.Location = new System.Drawing.Point(14, 189);
+            this.labelclassPrice.Name = "labelclassPrice";
+            this.labelclassPrice.Size = new System.Drawing.Size(143, 44);
+            this.labelclassPrice.TabIndex = 4;
+            this.labelclassPrice.Text = "150EGP";
+            // 
+            // labelclassTrainer
+            // 
+            this.labelclassTrainer.AutoSize = true;
+            this.labelclassTrainer.BackColor = System.Drawing.Color.Transparent;
+            this.labelclassTrainer.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelclassTrainer.ForeColor = System.Drawing.Color.White;
+            this.labelclassTrainer.Location = new System.Drawing.Point(14, 153);
+            this.labelclassTrainer.Name = "labelclassTrainer";
+            this.labelclassTrainer.Size = new System.Drawing.Size(279, 44);
+            this.labelclassTrainer.TabIndex = 3;
+            this.labelclassTrainer.Text = "Adham Elagaty";
+            // 
+            // labelclassname
+            // 
+            this.labelclassname.AutoSize = true;
+            this.labelclassname.BackColor = System.Drawing.Color.Transparent;
+            this.labelclassname.Font = new System.Drawing.Font("Gilroy-SemiBold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelclassname.ForeColor = System.Drawing.Color.White;
+            this.labelclassname.Location = new System.Drawing.Point(0, 19);
+            this.labelclassname.Name = "labelclassname";
+            this.labelclassname.Size = new System.Drawing.Size(174, 59);
+            this.labelclassname.TabIndex = 0;
+            this.labelclassname.Text = "Boxing";
+            this.labelclassname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelclassDay1
+            // 
+            this.labelclassDay1.AutoSize = true;
+            this.labelclassDay1.BackColor = System.Drawing.Color.Transparent;
+            this.labelclassDay1.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelclassDay1.ForeColor = System.Drawing.Color.White;
+            this.labelclassDay1.Location = new System.Drawing.Point(12, 78);
+            this.labelclassDay1.Name = "labelclassDay1";
+            this.labelclassDay1.Size = new System.Drawing.Size(156, 44);
+            this.labelclassDay1.TabIndex = 1;
+            this.labelclassDay1.Text = "Monday";
+            // 
+            // labelclassDay2
+            // 
+            this.labelclassDay2.AutoSize = true;
+            this.labelclassDay2.BackColor = System.Drawing.Color.Transparent;
+            this.labelclassDay2.Font = new System.Drawing.Font("Gilroy-SemiBold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelclassDay2.ForeColor = System.Drawing.Color.White;
+            this.labelclassDay2.Location = new System.Drawing.Point(14, 114);
+            this.labelclassDay2.Name = "labelclassDay2";
+            this.labelclassDay2.Size = new System.Drawing.Size(158, 44);
+            this.labelclassDay2.TabIndex = 2;
+            this.labelclassDay2.Text = "Tuesday";
+            // 
+            // bunifuElipse6
+            // 
+            this.bunifuElipse6.ElipseRadius = 50;
+            this.bunifuElipse6.TargetControl = this.panelClass;
+            // 
+            // bunifuElipse7
+            // 
+            this.bunifuElipse7.ElipseRadius = 50;
+            this.bunifuElipse7.TargetControl = this.panelPriv;
+            // 
+            // bunifuElipse8
+            // 
+            this.bunifuElipse8.ElipseRadius = 50;
+            this.bunifuElipse8.TargetControl = this.textNumlesson;
+            // 
+            // labelErrorLesson
+            // 
+            this.labelErrorLesson.AutoSize = true;
+            this.labelErrorLesson.BackColor = System.Drawing.Color.Transparent;
+            this.labelErrorLesson.Font = new System.Drawing.Font("Ubuntu", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelErrorLesson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.labelErrorLesson.Location = new System.Drawing.Point(598, 887);
+            this.labelErrorLesson.Name = "labelErrorLesson";
+            this.labelErrorLesson.Size = new System.Drawing.Size(0, 27);
+            this.labelErrorLesson.TabIndex = 48;
+            // 
             // subscribe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(1705, 1047);
+            this.ClientSize = new System.Drawing.Size(1705, 1046);
+            this.Controls.Add(this.labelErrorLesson);
+            this.Controls.Add(this.panelPrivSup);
+            this.Controls.Add(this.panelClassSup);
             this.Controls.Add(this.panelMonthSubscription);
             this.Controls.Add(this.labelprice);
             this.Controls.Add(this.label6);
@@ -888,6 +1110,13 @@
             this.panelMonthSubscription.ResumeLayout(false);
             this.panelMonth.ResumeLayout(false);
             this.panelMonth.PerformLayout();
+            this.panelClassSup.ResumeLayout(false);
+            this.panelPrivSup.ResumeLayout(false);
+            this.panelPrivSup.PerformLayout();
+            this.panelPriv.ResumeLayout(false);
+            this.panelPriv.PerformLayout();
+            this.panelClass.ResumeLayout(false);
+            this.panelClass.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,5 +1176,22 @@
         private System.Windows.Forms.Label labelfrezeNum;
         private System.Windows.Forms.Label labelmonthprice;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse5;
+        private System.Windows.Forms.Panel panelClassSup;
+        private System.Windows.Forms.Panel panelClass;
+        private System.Windows.Forms.Label labelclassPrice;
+        private System.Windows.Forms.Label labelclassTrainer;
+        private System.Windows.Forms.Label labelclassname;
+        private System.Windows.Forms.Label labelclassDay1;
+        private System.Windows.Forms.Label labelclassDay2;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse6;
+        private System.Windows.Forms.Panel panelPrivSup;
+        private System.Windows.Forms.Panel panelPriv;
+        private System.Windows.Forms.Label labelprivatTrainerName;
+        private System.Windows.Forms.Label labelPrivateSpetialize;
+        private System.Windows.Forms.Label labelPrivatPrice;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textNumlesson;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse7;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse8;
+        private System.Windows.Forms.Label labelErrorLesson;
     }
 }
